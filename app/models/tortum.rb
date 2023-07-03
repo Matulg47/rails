@@ -1,0 +1,2 @@
+class Tortum < ApplicationRecord
+end

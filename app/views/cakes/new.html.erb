@@ -1,0 +1,221 @@
+<link rel "stylesheet" href="estilos3.css">
+<%= form_for @torta, url:cakes_path do |f| %>
+    <h1> <%= params[:parametro1] %> sigamos con tu pedido de tortas </h1>
+<div class="contenedor">  
+    <div>
+        <h2>Marquise Frutos Rojos</h2>
+    </div>
+    <div>
+    <figure>
+        <%= image_tag "marquiseFR.png", title: "Marquise Frutos Rojos", class: "marquiseFR", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>     
+            <figcaption> Brownie + dulde de leche + crema + frutos rojos
+            </figcaption> 
+    </figure>  
+    </div> 
+
+<table>
+<tr>
+    <th>Opciones</th>
+    <th></th>
+    <th>Cantidad</th>
+</tr>
+<tr>
+    <td> <label class="texto" > 
+    Individual(10cm de diámetro)
+    </label> </td>
+    <td></td>
+    <td> <label class="prueba">
+        <input type="number" name="cantidadMFRC" min="0" max="20" placeholder="cantidad"/>
+        </label>
+    </td>
+</tr>
+<tr>
+    <td><label>
+        Mediana(18cm de diámetro, 6 porciones)
+        </label>  
+    </td>
+    <td></td>
+    <td> <label class="prueba">
+        <input type="number" name="cantidadMFRM" min="0" max="20" placeholder="cantidad"/>
+        </label>   
+    </td>
+</tr>
+<tr>
+    <td><label>
+    XL(28cm de diámetro, 8porciones)
+        </label>  
+    </td>
+    <td></td>
+    <td> <label class="prueba">
+        <input type="number" name="cantidadMFRG" min="0" max="20" placeholder="cantidad"/>
+        </label>   
+    </td>
+</tr>
+</table>
+</div>
+   
+   
+
+<div>
+</div>
+
+<div class="contenedor">
+    <div>
+        <h2>Marquise Oreo</h2 >
+    </div>
+    <div>
+        <figure>
+            <%= image_tag "marquiseO.jpg", title: "Marquise Oreo", class: "marquiseO", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Brownie + dulde de leche + crema oreo + merengue italiano
+            </figcaption> 
+        </figure>  
+    </div> 
+    <table>
+        <tr>
+            <th>Opciones</th>
+            <th></th>
+            <th>Cantidad</th>
+        </tr>
+        <tr>
+            <td> <label class="texto" > 
+            Individual(10cm de diámetro)
+            </label> </td>
+            <td></td>
+            <td> <label class="prueba">
+                <input type="number" name="cantidadMOC" min="0" max="20" placeholder="cantidad"/>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td><label>
+            Mediana(18cm de diámetro, 6 porciones)
+            </label>  
+            </td>
+            <td></td>
+            <td> <label class="prueba">
+                <input type="number" name="cantidadMOM" min="0" max="20" placeholder="cantidad"/>
+                </label>   
+            </td>
+        </tr>
+        <tr>
+            <td><label>
+                XL(28cm de diámetro, 8porciones)
+                </label>  
+            </td>
+            <td></td>
+            <td> <label class="prueba">
+                <input type="number" name="cantidadMOG" min="0" max="20" placeholder="cantidad"/>
+                </label>   
+            </td>
+        </tr>
+    </table>
+</div>
+    
+            
+    <div class="contenedor">
+    <div>
+        <label>Marquise Praline</label >
+    </div>
+    <div>
+        <figure>
+            <%= image_tag "marquisePL.png", title: "Marquise Praline", class: "marquisePL", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Brownie + dulde de leche + crema con nueces caramelizadas + merengue italiano
+            </figcaption> 
+        </figure>  
+    </div> 
+
+    <table>
+    <tr>
+        <th>Opciones</th>
+        <th></th>
+        <th>Cantidad</th>
+    </tr>
+    <tr>
+        <td> <label class="texto" > 
+        Individual(10cm de diámetro)
+        </label> </td>
+        <td></td>
+        <td> <label class="prueba">
+            <input type="number" name="cantidadMPC" min="0" max="20" placeholder="cantidad"/>
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td><label>
+        Mediana(18cm de diámetro, 6 porciones)
+        </label>  
+        </td>
+        <td></td>
+        <td> <label class="prueba">
+            <input type="number" name="cantidadMPM" min="0" max="20" placeholder="cantidad"/>
+            </label>   
+        </td>
+    </tr>
+    <tr>
+        <td><label>
+            XL(28cm de diámetro, 8porciones)
+            </label>  
+        </td>
+        <td></td>
+        <td> <label class="prueba">
+            <input type="number" name="cantidadMPG" min="0" max="20" placeholder="cantidad"/>
+            </label>   
+        </td>
+    </tr>
+</table>
+</div>
+    
+<div class="contenedor">
+    <div>
+        <label>Cheesecake de frutos rojos</label >
+    </div>
+    <div>
+        <figure>
+            <%= image_tag "cheesecakeFR.jpg", title: "Cheesecake", class: "cheesecakeFR", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> falta ingredientes
+            </figcaption> 
+        </figure>  
+    </div> 
+    <table>
+    <tr>
+        <th>Opciones</th>
+        <th></th>
+        <th>Cantidad</th>
+    </tr>
+    <tr>
+        <td> <label class="texto" > 
+        Individual(10cm de diámetro)
+        </label> </td>
+        <td></td>
+        <td> <label class="prueba">
+            <input type="number" name="cantidadCFRC" min="0" max="20" placeholder="cantidad"/>
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td><label>
+        Mediana(18cm de diámetro, 6 porciones)
+        </label>  
+        </td>
+        <td></td>
+        <td> <label class="prueba">
+            <input type="number" name="cantidadCFRM" min="0" max="20" placeholder="cantidad"/>
+            </label>   
+        </td>
+    </tr>
+    <tr>
+        <td><label>
+            XL(28cm de diámetro, 8porciones)
+            </label>  
+        </td>
+        <td></td>
+        <td> <label class="prueba">
+            <input type="number" name="cantidadCFRG" min="0" max="20" placeholder="cantidad"/>
+            </label>   
+        </td>
+    </tr>
+</table>
+</div> 
+
+<%= f.submit "Continuar" %>
+<% end %>

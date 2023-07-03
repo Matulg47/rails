@@ -1,0 +1,29 @@
+<link rel "stylesheet" href="estilos2.css">
+<%= form_for(@pedido) do |f| %>
+   
+    <label for="pedido[a_nombre_de]"> Nombre </label>
+    <input type="text" id="name" name="pedido[a_nombre_de]" placeholder="Ingrese a nombre de quien serà el pedido" required>
+    
+    <input type="date" id="name" name="pedido[fecha_de_entrega]"  required>
+
+    <label class="checkeable">
+        <input type="radio" name="pedido[producto]" value="torta" checked/>
+            <%= image_tag "torta.png", title: "torta", class: "logo"%>         
+    </label >
+    <label class="checkeable">
+        <input type="radio" name="pedido[producto]" value="tarta"/>
+            <%= image_tag "tarta.png", title: "tarta", class: "logo"%>
+    </label >
+    
+    <label class="checkeable">
+        <input type="radio" name="pedido[producto]" value="macaroons" />
+            <%= image_tag "macaroons.png", title: "macaroons", class: "logo"%>
+    </label >
+    <label class="checkeable">
+        <input type="radio" name="pedido[producto]" value="desayuno" />
+            <%= image_tag "desayuno.png", title: "desayuno", class: "logo"%>
+    </label >
+        
+
+    <input type="submit" value="Enviar" />
+<% end %>

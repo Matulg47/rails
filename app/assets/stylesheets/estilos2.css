@@ -1,0 +1,13 @@
+.checkeable input {
+    display: none;
+  }
+  .checkeable img {
+    width: 200px;
+    border: 5px solid transparent;
+  }
+  .checkeable input {
+    display: none;
+  }
+  .checkeable input:checked  + img {
+    border-color: #d3b6b2;
+  }

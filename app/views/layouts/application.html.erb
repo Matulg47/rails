@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RubyRailsPostgres</title>
+    <title>Ulahua 🎂</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,20 @@
   </head>
 
   <body>
-    <%= yield %>
+  <%= render 'layouts/header' %>
+    <div class="container"> 
+    
+        <% if flash[:notice] %>
+          <div class="alert alert-info"> <%= flash[:notice] %> </div>
+        <% end %>
+        <% if flash[:alert] %>
+        <div class="alert alert-info"> <%= flash[:alert] %> </div>
+        <% end %>
+        <% if flash[:error] %>
+        <div class="alert alert-info"> <%= flash[:error] %> </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    
   </body>
 </html>

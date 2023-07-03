@@ -1,0 +1,42 @@
+figure{
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+figcaption{
+    color: white;
+    transition: all 0.3s;
+    background: linear-gradient(rgba(255,255,255,0),black);
+    position: absolute;
+    left: 0px; 
+    bottom: -150px; 
+    width: 90%;
+    padding: 3%;
+    
+}
+figure:hover figcaption{
+    bottom: 0px; 
+}
+
+.contenedor{
+    background: #f1dcda;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%; 
+    padding-left: 40px;
+    
+    
+}
+
+label {
+}
+.prueba input {
+    width: 45px;
+    height: 42px;
+    line-height: 1.65;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+    border: 1px solid rgb(207, 173, 173);
+  }

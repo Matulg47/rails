@@ -1,0 +1,2 @@
+class Tartum < ApplicationRecord
+end

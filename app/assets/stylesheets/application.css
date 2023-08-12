@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+/*body {
+   background-image: url('Fondo.webp');
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+    }*/

@@ -1,76 +1,130 @@
+<head>
 <link rel "stylesheet" href="estilos3.css">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0 , minimum-scale=1.0">
+</head>
 <%= form_for @torta, url:cakes_path do |f| %>
-    <h1> <%= params[:parametro1] %> sigamos con tu pedido de tortas </h1>
+    <h1> <%= params[:nombre] %> sigamos con tu pedido de tortas </h1>
 <div class="contenedor">  
-    <div>
+    <div class="lista">
         <h2>Marquise Frutos Rojos</h2>
+    
+    
+        <figure>
+            <%= image_tag "marquiseFR.png", title: "Marquise Frutos Rojos", class: "marquiseFR", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>     
+                <figcaption> Brownie + dulde de leche + crema + frutos rojos
+                </figcaption> 
+        </figure>  
+    
+
+        <table>
+            <tr>
+                <th>Opciones</th>
+                <th></th>
+                <th>Cantidad</th>
+            </tr>
+            <tr>
+                <td> <label class="texto" > 
+                    Individual(10cm de diámetro)
+                </label> </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadMFRC'  %>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                    Mediana(18cm de diámetro, 6 porciones)
+                    </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadMFRM'  %>
+                    </label>   
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                    XL(28cm de diámetro, 8porciones)
+                    </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadMFRG'  %>
+                    </label>   
+                </td>
+            </tr>
+        </table>
     </div>
-    <div>
-    <figure>
-        <%= image_tag "marquiseFR.png", title: "Marquise Frutos Rojos", class: "marquiseFR", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>     
-            <figcaption> Brownie + dulde de leche + crema + frutos rojos
-            </figcaption> 
-    </figure>  
-    </div> 
-
-<table>
-<tr>
-    <th>Opciones</th>
-    <th></th>
-    <th>Cantidad</th>
-</tr>
-<tr>
-    <td> <label class="texto" > 
-    Individual(10cm de diámetro)
-    </label> </td>
-    <td></td>
-    <td> <label class="prueba">
-        <input type="number" name="cantidadMFRC" min="0" max="20" placeholder="cantidad"/>
-        </label>
-    </td>
-</tr>
-<tr>
-    <td><label>
-        Mediana(18cm de diámetro, 6 porciones)
-        </label>  
-    </td>
-    <td></td>
-    <td> <label class="prueba">
-        <input type="number" name="cantidadMFRM" min="0" max="20" placeholder="cantidad"/>
-        </label>   
-    </td>
-</tr>
-<tr>
-    <td><label>
-    XL(28cm de diámetro, 8porciones)
-        </label>  
-    </td>
-    <td></td>
-    <td> <label class="prueba">
-        <input type="number" name="cantidadMFRG" min="0" max="20" placeholder="cantidad"/>
-        </label>   
-    </td>
-</tr>
-</table>
-</div>
-   
    
 
-<div>
-</div>
-
-<div class="contenedor">
     <div>
+    </div>
+
+
+    <div class="lista">
         <h2>Marquise Oreo</h2 >
-    </div>
-    <div>
+    
         <figure>
             <%= image_tag "marquiseO.jpg", title: "Marquise Oreo", class: "marquiseO", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-            <figcaption> Brownie + dulde de leche + crema oreo + merengue italiano
-            </figcaption> 
+                <figcaption> Brownie + dulde de leche + crema oreo + merengue italiano
+                </figcaption> 
         </figure>  
-    </div> 
-    <table>
+ 
+        <table>
+            <tr>
+                <th>Opciones</th>
+                <th></th>
+                <th>Cantidad</th>
+            </tr>
+            <tr>
+                <td> <label class="texto" > 
+                Individual(10cm de diámetro)
+                </label> </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadMOC'  %>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                Mediana(18cm de diámetro, 6 porciones)
+                </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadMOM'  %>
+                    </label>   
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                    XL(28cm de diámetro, 8porciones)
+                    </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadMOG'  %>
+                    </label>   
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+            
+   
+    <div class="lista">
+        <h2>Marquise Praline</h2>
+    
+        <figure>
+            <%= image_tag "marquisePL.png", title: "Marquise Praline", class: "marquisePL", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+                <figcaption> Brownie + dulde de leche + crema con nueces caramelizadas + merengue italiano
+                </figcaption> 
+        </figure>  
+     
+
+        <table>
         <tr>
             <th>Opciones</th>
             <th></th>
@@ -82,18 +136,19 @@
             </label> </td>
             <td></td>
             <td> <label class="prueba">
-                <input type="number" name="cantidadMOC" min="0" max="20" placeholder="cantidad"/>
+                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadMPC'  %>
                 </label>
             </td>
         </tr>
         <tr>
             <td><label>
-            Mediana(18cm de diámetro, 6 porciones)
-            </label>  
+                Mediana(18cm de diámetro, 6 porciones)
+                </label>  
             </td>
             <td></td>
             <td> <label class="prueba">
-                <input type="number" name="cantidadMOM" min="0" max="20" placeholder="cantidad"/>
+                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadMPM'  %>
+
                 </label>   
             </td>
         </tr>
@@ -104,78 +159,23 @@
             </td>
             <td></td>
             <td> <label class="prueba">
-                <input type="number" name="cantidadMOG" min="0" max="20" placeholder="cantidad"/>
+                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadMPG'  %>
                 </label>   
             </td>
         </tr>
-    </table>
-</div>
-    
-            
-    <div class="contenedor">
-    <div>
-        <label>Marquise Praline</label >
+        </table>
     </div>
-    <div>
-        <figure>
-            <%= image_tag "marquisePL.png", title: "Marquise Praline", class: "marquisePL", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-            <figcaption> Brownie + dulde de leche + crema con nueces caramelizadas + merengue italiano
-            </figcaption> 
-        </figure>  
-    </div> 
+    
 
-    <table>
-    <tr>
-        <th>Opciones</th>
-        <th></th>
-        <th>Cantidad</th>
-    </tr>
-    <tr>
-        <td> <label class="texto" > 
-        Individual(10cm de diámetro)
-        </label> </td>
-        <td></td>
-        <td> <label class="prueba">
-            <input type="number" name="cantidadMPC" min="0" max="20" placeholder="cantidad"/>
-            </label>
-        </td>
-    </tr>
-    <tr>
-        <td><label>
-        Mediana(18cm de diámetro, 6 porciones)
-        </label>  
-        </td>
-        <td></td>
-        <td> <label class="prueba">
-            <input type="number" name="cantidadMPM" min="0" max="20" placeholder="cantidad"/>
-            </label>   
-        </td>
-    </tr>
-    <tr>
-        <td><label>
-            XL(28cm de diámetro, 8porciones)
-            </label>  
-        </td>
-        <td></td>
-        <td> <label class="prueba">
-            <input type="number" name="cantidadMPG" min="0" max="20" placeholder="cantidad"/>
-            </label>   
-        </td>
-    </tr>
-</table>
-</div>
+    <div class="lista">
+        <h2>Cheesecake de frutos rojos</h2 >
     
-<div class="contenedor">
-    <div>
-        <label>Cheesecake de frutos rojos</label >
-    </div>
-    <div>
         <figure>
             <%= image_tag "cheesecakeFR.jpg", title: "Cheesecake", class: "cheesecakeFR", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
             <figcaption> falta ingredientes
             </figcaption> 
         </figure>  
-    </div> 
+    
     <table>
     <tr>
         <th>Opciones</th>
@@ -188,7 +188,7 @@
         </label> </td>
         <td></td>
         <td> <label class="prueba">
-            <input type="number" name="cantidadCFRC" min="0" max="20" placeholder="cantidad"/>
+            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCFRC'  %>
             </label>
         </td>
     </tr>
@@ -199,7 +199,7 @@
         </td>
         <td></td>
         <td> <label class="prueba">
-            <input type="number" name="cantidadCFRM" min="0" max="20" placeholder="cantidad"/>
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCFRM'  %>
             </label>   
         </td>
     </tr>
@@ -210,12 +210,172 @@
         </td>
         <td></td>
         <td> <label class="prueba">
-            <input type="number" name="cantidadCFRG" min="0" max="20" placeholder="cantidad"/>
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCFRG'  %>
             </label>   
         </td>
     </tr>
 </table>
 </div> 
 
-<%= f.submit "Continuar" %>
+    <div class="lista">
+    <h2>Marquise Clásica</h2 >
+
+    <figure>
+        <%= image_tag "marquiseClasica.jpeg", title: "Marquise Clásica", class: "marquiseC", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Brownie + Dulde de Leche + Merengue Italiano o Crema
+            </figcaption> 
+    </figure>  
+
+
+    <table>
+    <tr>
+        <th>Opciones</th>
+        <th></th>
+        <th>Cantidad</th>
+    </tr>
+    <tr>
+        <td> <label class="texto" > 
+        Individual(10cm de diámetro)
+        </label> </td>
+        <td></td>
+        <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCC'  %>
+
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td><label>
+            Mediana(18cm de diámetro, 6 porciones)
+            </label>  
+        </td>
+        <td></td>
+        <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCM'  %>
+            </label>   
+        </td>
+    </tr>
+    <tr>
+        <td><label>
+            XL(28cm de diámetro, 8porciones)
+            </label>  
+        </td>
+        <td></td>
+        <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCG'  %>
+            </label>   
+        </td>
+    </tr>
+    </table>
+    </div>
+
+
+    <div class="lista">
+    <h2>Marquise Ferrero</h2 >
+
+    <figure>
+        <%= image_tag "marquiseFerrero.jpeg", title: "Marquise Ferrero", class: "marquiseF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Brownie + Dulce de Leche + Nutella + Crema + Ferreros
+            </figcaption> 
+    </figure>  
+
+
+    <table>
+    <tr>
+        <th>Opciones</th>
+        <th></th>
+        <th>Cantidad</th>
+    </tr>
+    <tr>
+        <td> <label class="texto" > 
+        Individual(10cm de diámetro)
+        </label> </td>
+        <td></td>
+        <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadFC'  %>
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td><label>
+            Mediana(18cm de diámetro, 6 porciones)
+            </label>  
+        </td>
+        <td></td>
+        <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadFM'  %>
+            </label>   
+        </td>
+    </tr>
+    <tr>
+        <td><label>
+            XL(28cm de diámetro, 8porciones)
+            </label>  
+        </td>
+        <td></td>
+        <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadFG'  %>
+            </label>   
+        </td>
+    </tr>
+    </table>
+    </div>
+
+
+    <div class="lista">
+    <h2>Rogel</h2>
+
+    <figure>
+        <%= image_tag "Rogel.jpeg", title: "Rogel", class: "rogel", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> si descripcion
+            </figcaption> 
+    </figure>  
+
+
+    <table>
+    <tr>
+        <th>Opciones</th>
+        <th></th>
+        <th>Cantidad</th>
+    </tr>
+    <tr>
+        <td> <label class="texto" > 
+        Individual(10cm de diámetro)
+        </label> </td>
+        <td></td>
+        <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'rogelC'  %>
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td><label>
+            Mediana(18cm de diámetro, 6 porciones)
+            </label>  
+        </td>
+        <td></td>
+        <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'rogelM'  %>
+            </label>   
+        </td>
+    </tr>
+    <tr>
+        <td><label>
+            XL(28cm de diámetro, 8porciones)
+            </label>  
+        </td>
+        <td></td>
+        <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'rogelG'  %>
+            </label>   
+        </td>
+    </tr>
+    </table>
+    </div>
+    <div class="lista">
+<input type="text" name="pedido_id"  value= <%= params[:pedido_id] %> />
+<%= f.submit "Continuar", class: 'boton' %>
+
+</div> 
+</div>
 <% end %>

@@ -1,0 +1,2 @@
+module TartaHelper
+end

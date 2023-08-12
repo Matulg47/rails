@@ -1,0 +1,508 @@
+<head>
+<link rel "stylesheet" href="estilos3.css">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0 , minimum-scale=1.0">
+</head>
+<%= form_for @tarta, url:tarta_path do |f| %>
+    <h1> <%= params[:nombre] %> sigamos con tu pedido de tartas </h1>
+    <div class="contenedor">  
+        <div class="lista">
+            <h2>Lemon Pie</h2>   
+            <figure>
+                <%= image_tag "lemonpie.jpeg", title: "Lemon Pie", class: "lemonPie", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>     
+                    <figcaption> Descripcion a agregar
+                    </figcaption> 
+            </figure>  
+            <table>
+                <tr>
+                    <th>Opciones</th>
+                    <th></th>
+                    <th>Cantidad</th>
+                </tr>
+                <tr>
+                    <td> <label class="texto" > 
+                    Individual(10cm de diámetro)
+                    </label> </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadLPC'  %>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>
+                        Mediana(18cm de diámetro, 6 porciones)
+                        </label>  
+                    </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadLPM'  %>
+                    </label>   
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>
+                        XL(28cm de diámetro, 8porciones)
+                        </label>  
+                    </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadLPG'  %>
+                        </label>   
+                    </td>
+                </tr>
+            </table>
+        </div>
+   
+
+        <div>
+        </div>
+
+
+        <div class="lista">
+            <h2>Tarta Tofi</h2 >
+    
+            <figure>
+                <%= image_tag "tartaTofi.jpeg", title: "Tarta Tofi", class: "tartaTofi", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+                <figcaption> Descripcion a agregar
+                </figcaption> 
+            </figure>  
+ 
+            <table>
+                <tr>
+                    <th>Opciones</th>
+                    <th></th>
+                    <th>Cantidad</th>
+                </tr>
+                <tr>
+                    <td> <label class="texto" > 
+                    Individual(10cm de diámetro)
+                    </label> </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTTC'  %>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>
+                    Mediana(18cm de diámetro, 6 porciones)
+                    </label>  
+                    </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTTM'  %>
+                    </label>   
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>
+                        XL(28cm de diámetro, 8porciones)
+                        </label>  
+                    </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTTG'  %>
+                    </label>   
+                    </td>
+                </tr>
+            </table>
+        </div>
+    
+            
+   
+    <div class="lista">
+        <h2>Crumble de Manzana</h2 >
+    
+        <figure>
+            <%= image_tag "crumbleManzana.jpeg", title: "Crumble de Manzana", class: "crumbleM", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Descripciòn a agregar
+            </figcaption> 
+        </figure>  
+     
+
+        <table>
+            <tr>
+                <th>Opciones</th>
+                <th></th>
+                <th>Cantidad</th>
+            </tr>
+            <tr>
+                <td> <label class="texto" > 
+                Individual(10cm de diámetro)
+                </label> </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCMC'  %>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                Mediana(18cm de diámetro, 6 porciones)
+                </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCMM'  %>
+                </label>   
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                    XL(28cm de diámetro, 8porciones)
+                    </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCMG'  %>
+                </label>   
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+
+    <div class="lista">
+        <h2>Tarta de Coco</h2 >
+    
+        <figure>
+            <%= image_tag "tartaCoco.jpeg", title: "Tarta Coco", class: "tartaC", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Descripcion
+            </figcaption> 
+        </figure>  
+    
+        <table>
+            <tr>
+                <th>Opciones</th>
+                <th></th>
+                <th>Cantidad</th>
+            </tr>
+            <tr>
+                <td> <label class="texto" > 
+                Individual(10cm de diámetro)
+                </label> </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTCC'  %>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                Mediana(18cm de diámetro, 6 porciones)
+                </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTCM'  %>
+                </label>   
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                    XL(28cm de diámetro, 8porciones)
+                    </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTCG'  %>
+                </label>   
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="lista">
+        <h2>Tarta de Frutilla</h2 >
+    
+        <figure>
+            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Descripcion
+            </figcaption> 
+        </figure>  
+    
+        <table>
+     
+            <tr>
+                <th>Opciones</th>
+                <th></th>
+                <th>Cantidad</th>
+            </tr>
+            <tr>
+                <td> <label class="texto" > 
+                Individual(10cm de diámetro)
+                </label> </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFC'  %>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                Mediana(18cm de diámetro, 6 porciones)
+                </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFM'  %>
+                </label>   
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                    XL(28cm de diámetro, 8porciones)
+                    </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFG'  %>
+                </label>   
+                </td>
+            </tr>
+        </table>
+    </div> 
+
+
+    <div class="lista">
+        <h2>Tarta Tofi con Oreos</h2 >
+    
+        <figure>
+            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaTO", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Descripcion
+            </figcaption> 
+        </figure>  
+    
+        <table>
+     
+            <tr>
+                <th>Opciones</th>
+                <th></th>
+                <th>Cantidad</th>
+            </tr>
+            <tr>
+                <td> <label class="texto" > 
+                Individual(10cm de diámetro)
+                </label> </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTOC'  %>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                Mediana(18cm de diámetro, 6 porciones)
+                </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTOM'  %>
+                </label>   
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                    XL(28cm de diámetro, 8porciones)
+                    </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTOG'  %>
+                </label>   
+                </td>
+            </tr>
+        </table>
+    </div> 
+    <div class="lista">
+        <h2>Tarta de Ricota</h2 >
+    
+        <figure>
+            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaR", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Descripcion
+            </figcaption> 
+        </figure>  
+    
+        <table>
+     
+            <tr>
+                <th>Opciones</th>
+                <th></th>
+                <th>Cantidad</th>
+            </tr>
+            <tr>
+                <td> <label class="texto" > 
+                Individual(10cm de diámetro)
+                </label> </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadRC'  %>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                Mediana(18cm de diámetro, 6 porciones)
+                </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadRM'  %>
+                </label>   
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                    XL(28cm de diámetro, 8porciones)
+                    </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadRG'  %>
+                </label>   
+                </td>
+            </tr>
+        </table>
+    </div> 
+
+
+    <div class="lista">
+        <h2>Tarta de Ricota y Frambuesas</h2 >
+    
+        <figure>
+            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Descripcion
+            </figcaption> 
+        </figure>  
+    
+        <table>
+     
+            <tr>
+                <th>Opciones</th>
+                <th></th>
+                <th>Cantidad</th>
+            </tr>
+            <tr>
+                <td> <label class="texto" > 
+                Individual(10cm de diámetro)
+                </label> </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFOC'  %>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                Mediana(18cm de diámetro, 6 porciones)
+                </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFOM'  %>
+                    </label>   
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                    XL(28cm de diámetro, 8porciones)
+                    </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFOG'  %>
+                </label>   
+                </td>
+            </tr>
+        </table>
+    </div> 
+
+
+    <div class="lista">
+        <h2>Pasta Frolla de Membrillo o Batata</h2 >
+    
+        <figure>
+            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Descripcion
+            </figcaption> 
+        </figure>  
+    
+        <table>
+     
+            <tr>
+                <th>Opciones</th>
+                <th></th>
+                <th>Cantidad</th>
+            </tr>
+            <tr>
+                <td> <label class="texto" > 
+                Individual(10cm de diámetro)
+                </label> </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadPFC'  %>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                Mediana(18cm de diámetro, 6 porciones)
+                </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadPFM'  %>
+                    </label>   
+                </td>
+            </tr>
+            <tr>
+                <td><label>
+                    XL(28cm de diámetro, 8porciones)
+                    </label>  
+                </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadPFG'  %>
+                </label>   
+                </td>
+            </tr>
+        </table>
+    </div> 
+
+
+    <div class="lista">
+        <h2>Tarta de Maracuyá y Frambuesa</h2 >
+    
+        <figure>
+            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+            <figcaption> Descripcion
+            </figcaption> 
+        </figure>  
+    
+        <table>
+     
+            <tr>
+                <th>Opciones</th>
+                <th></th>
+                <th>Cantidad</th>
+            </tr>
+            <tr>
+                <td> <label class="texto" > 
+                20cm de diámetro (8 porciones)
+                </label> </td>
+                <td></td>
+                <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadPF'  %>
+                    </label>
+                </td>
+            </tr>
+           
+        </table>
+    </div> 
+
+
+    <div class="lista">
+    <input type="text" name="pedido_id"  value= <%= params[:pedido_id] %> />
+    <%= f.submit "Continuar", class: 'boton' %>
+    </div> 
+    </div>
+<% end %>

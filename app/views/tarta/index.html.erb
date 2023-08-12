@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tarta</h1>
+
+<div id="tarta">
+  <% @tarta.each do |tartum| %>
+    <%= render tartum %>
+    <p>
+      <%= link_to "Show this tartum", tartum %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New tartum", new_tartum_path %>

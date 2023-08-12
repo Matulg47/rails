@@ -1,17 +1,22 @@
 <head>
     <link rel "stylesheet" href="estilos.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0 , minimum-scale=1.0">
 </head>
 <header >
     <div class= "wrapper">
         <div class>  
-            <%= link_to '/pedidos#index', class: 'navbar-brand' do %>
+            <%= link_to '/', class: 'navbar-brand' do %>
                 <%= image_tag "logo.png", title: "Logo", class: "logo"%>
             <%end%>
         </div>
-        <nav>
-            <a href= '/pedidos#index'> Inicio </a>
-            <a href= '/contactos#show'> ¿Quienes somos? </a>
-            <a href= '/contactos#index'> Contacto </a>
-        </nav>
+        <ul class="nav">
+            <li><a href= '/' class="boton"> Inicio </a>
+                <ul><li><a href= '/pedidos/new' class="boton"> Hacer un pedido</a></li></ul>
+            </li>
+            <li> <div style="width: 10px; height: 10px;"></div></li> 
+            <li> <a href= '/contactos/show' class="boton"> ¿Quienes somos? </a></li>
+            <li> <div style="width: 10px; height: 10px;"></div></li> 
+            <li><a href= '/contactos/index' class="boton"> Contacto </a></li>
+        </ul>
     </div>
 </header>

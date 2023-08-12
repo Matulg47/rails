@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @desayuno %>
+
+<div>
+  <%= link_to "Edit this desayuno", edit_desayuno_path(@desayuno) %> |
+  <%= link_to "Back to desayunos", desayunos_path %>
+
+  <%= button_to "Destroy this desayuno", @desayuno, method: :delete %>
+</div>

@@ -1,29 +1,63 @@
 <link rel "stylesheet" href="estilos2.css">
 <%= form_for(@pedido) do |f| %>
-   
-    <label for="pedido[a_nombre_de]"> Nombre </label>
-    <input type="text" id="name" name="pedido[a_nombre_de]" placeholder="Ingrese a nombre de quien serà el pedido" required>
-    
-    <input type="date" id="name" name="pedido[fecha_de_entrega]"  required>
-
-    <label class="checkeable">
-        <input type="radio" name="pedido[producto]" value="torta" checked/>
-            <%= image_tag "torta.png", title: "torta", class: "logo"%>         
-    </label >
-    <label class="checkeable">
-        <input type="radio" name="pedido[producto]" value="tarta"/>
-            <%= image_tag "tarta.png", title: "tarta", class: "logo"%>
-    </label >
-    
-    <label class="checkeable">
-        <input type="radio" name="pedido[producto]" value="macaroons" />
-            <%= image_tag "macaroons.png", title: "macaroons", class: "logo"%>
-    </label >
-    <label class="checkeable">
-        <input type="radio" name="pedido[producto]" value="desayuno" />
-            <%= image_tag "desayuno.png", title: "desayuno", class: "logo"%>
-    </label >
+    <div class="contenedor">  
+        <div class="lista">
+            <table>
+            <% if !params[:pedido_id].present?  %>
+                <tr>
+                    <label for="pedido[a_nombre_de]"> Nombre </label>
+                    </tr><tr> <input type="text" id="name" name="pedido[a_nombre_de]" placeholder="Ingrese a nombre de quien será el pedido" style="width: 300px;height: 30px;" required/>
+                        
+                    <label> Fecha de entrega </label>
+                        <input type="date" id="name" name="pedido[fecha_de_entrega]" style="width: 150px;height: 30px;" required/>
+                        </tr>
+            <% end %>   
+                <tr> 
+                    <figura>
+                        <%= image_tag "tortas.jpeg", title: "torta", class: "logo", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>         
+                        <figcaption2> <h3 class="display-4" style="font-family: LEMON MILK; font-size: 30px; text-shadow: 2px 2px 10px white;">TORTAS</h3>
+                        </figcaption2> 
+                        <a href='/cakes/new?pedido_id=1&nombre=prueba' class="boton2">Ver más</a>
+                    </figura>
+                    
+                </tr>
+                <tr> 
+                    <figura>
+                        <%= image_tag "tartas.jpeg", title: "tarta", class: "logo", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+                        <figcaption2> <h3 class="display-4" style="font-family: LEMON MILK; font-size: 30px; text-shadow: 2px 2px 10px white;">TARTAS</h3>
+                        </figcaption2> 
+                        <button class="boton2" name='tartaCont'>Ver más</button>
+                    </figura>
+                </tr>
+                <tr> 
+                    <figura>
+                        <%= image_tag "macarons.jpeg", title: "macaroons", class: "logo", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+                        <figcaption2> <h3 class="display-4" style="font-family: LEMON MILK; font-size: 30px; text-shadow: 2px 2px 10px white;">MACAROONS</h3>
+                        </figcaption2> 
+                        <button class="boton2">Ver más</button>
+                    </figura>
+                        
+                </tr>
+                <tr> 
+                    <figura>
+                        <%= image_tag "chipa.jpeg", title: "chipa", class: "logo", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+                        <figcaption2> <h3 class="display-4" style="font-family: LEMON MILK; font-size: 30px; text-shadow: 2px 2px 10px white;">OTROS</h3>
+                        </figcaption2> 
+                        <button class="boton2">Ver más</button>
+                    </figura>
+                </tr>
+                <tr> 
+                    <figura>
+                        <%= image_tag "desayuno.jpeg", title: "desayuno", class: "logo", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+                        <figcaption2> <h3 class="display-4" style="font-family: LEMON MILK; font-size: 30px; text-shadow: 2px 2px 10px white;">DESAYUNOS</h3>
+                        </figcaption2> 
+                        <button class="boton2">Ver más</button>
+                    </figura>
+                </tr>
+               
+            </table>
+        </div>
         
-
-    <input type="submit" value="Enviar" />
+    </div>
+    
 <% end %>

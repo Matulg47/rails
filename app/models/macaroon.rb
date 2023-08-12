@@ -1,0 +1,2 @@
+class Macaroon < ApplicationRecord
+end

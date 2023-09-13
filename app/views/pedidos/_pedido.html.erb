@@ -1,7 +1,60 @@
 <div id="<%= dom_id pedido %>">
   <p>
-    <strong>Continuar:</strong>
-    <%= pedido.continuar %>
-  </p>
+    <h1>Resumen del Pedido</h1>
+    <p>Detalles del pedido:</p>
+      <ul>
+        <li>Cliente: <%= @pedido.a_nombre_de %></li>
+        <li>Fecha: <%= @pedido.fecha_de_entrega %></li>
+        <!-- Otros detalles del pedido -->
+      </ul>
+  
+      <h2>Tortas en el pedido:</h2>
+      <ul>
+        <% @tortas.each do |torta| %>
+          <li>
+            <%= torta.nombre %> - Unidades:<%=torta.cantidad %> - Tamaño:<%= torta.tamaño %> - <%= number_to_currency(torta.precio) %>
+          </li>
+        <% end %>
+      </ul>
 
+      <h2>Tartas en el pedido:</h2>
+      <ul>
+        <% @tartas.each do |tarta| %>
+          <li>
+            <%= tarta.nombre %> - Unidades:<%=tarta.cantidad %> - Tamaño:<%= tarta.tamaño %> - <%= number_to_currency(tarta.precio) %>
+          </li>
+        <% end %>
+      </ul>
+      <h2>Desayunos personalizados en el pedido:</h2>
+      <ul>
+        <% @desayunos.each do |desayuno| %>
+          <li>
+            <%= desayuno.descripcion %> - <%= number_to_currency(desayuno.precio) %>
+          </li>
+        <% end %>
+      </ul>
+  </p>
+  <%@consulta_texto="¡Hola Cami!
+
+Espero que estés teniendo un buen día. Quisiera hacer un pedido de algunos productos deliciosos para [fecha del pedido]. Aquí están los detalles:
+
+**Pedido:**
+
+- [Producto 1]: [Detalles del producto 1]
+- [Producto 2]: [Detalles del producto 2]
+- [Producto 3]: [Detalles del producto 3]
+- ...
+
+**Detalles Adicionales:**
+
+- Fecha de entrega: [Fecha de entrega deseada]
+- Dirección de entrega: [Dirección de entrega]
+- Información adicional: [Cualquier nota o requisito especial]
+
+Por favor, avísame si necesitas más información o si hay algún problema con mi pedido. ¡Estoy emocionado/a de probar tus deliciosos productos!
+
+¡Gracias y saludos!
+[Tu Nombre]
+[Tu Número de Contacto]"%>
+<a href="<%= 'https://wa.me/2216203959?text=' + URI.encode_www_form_component(@consulta_texto) %>" class="boton">Enviar pedido</a>
 </div>

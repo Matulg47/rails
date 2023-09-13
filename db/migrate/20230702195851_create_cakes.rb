@@ -6,7 +6,7 @@ class CreateCakes < ActiveRecord::Migration[7.0]
       t.integer :precio
       t.string :descripcion
       t.integer :pedido_id
-
+      t.integer :cantidad
       t.timestamps
     end
   end

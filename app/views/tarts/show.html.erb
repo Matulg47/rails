@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tart %>
+
+<div>
+  <%= link_to "Edit this tart", edit_tartum_path(@tart) %> |
+  <%= link_to "Back to tarta", tarts_path %>
+
+  <%= button_to "Destroy this tart", @tart, method: :delete %>
+</div>

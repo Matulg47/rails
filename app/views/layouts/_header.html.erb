@@ -1,22 +1,29 @@
 <head>
-    <link rel "stylesheet" href="estilos.css">
+<link rel="stylesheet" href="/assets/estilos.css">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0 , minimum-scale=1.0">
+   
+    
 </head>
+<body>
 <header >
-    <div class= "wrapper">
-        <div class>  
+<div class= "wrapper">
+        
             <%= link_to '/', class: 'navbar-brand' do %>
-                <%= image_tag "logo.png", title: "Logo", class: "logo"%>
+                <%= image_tag "logo.png", title: "Logo", class: "logoH"%>
             <%end%>
-        </div>
+        
         <ul class="nav">
-            <li><a href= '/' class="boton"> Inicio </a>
-                <ul><li><a href= '/pedidos/new' class="boton"> Hacer un pedido</a></li></ul>
+            <li><a href= '/' class="botonH"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(98, 0, 0, 1);transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></a>
+                <ul><li><a href= '/pedidos/new' class="boton"> Hacer un pedido</a></li>
+                <li><a href= '/contactos/show' class="boton"> ¿Quienes somos? </a></li>
+                <li><a href= '/contactos/index' class="boton"> Contacto </a></li></ul>
             </li>
-            <li> <div style="width: 10px; height: 10px;"></div></li> 
-            <li> <a href= '/contactos/show' class="boton"> ¿Quienes somos? </a></li>
-            <li> <div style="width: 10px; height: 10px;"></div></li> 
-            <li><a href= '/contactos/index' class="boton"> Contacto </a></li>
+            
+
         </ul>
+       
     </div>
+
+
 </header>
+</body>

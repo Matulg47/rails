@@ -1,14 +1,62 @@
 .boton {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #df7da1;
+    background-color: #990033;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
+    cursor: pointer;
+    margin: 10px ; /* Establece el margen horizontal automáticamente para centrar */
+    text-align: center; /* Centra el texto dentro del botón */
+    margin-bottom: 20px;
   }
+  .centrar {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    }
   
   .boton:hover {
     background-color: #cc4351;
+    color: #fff;
+    text-decoration: none;
   }
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #eccbd7;
+    overflow-x: hidden; /* Evita que aparezca la barra de desplazamiento horizontal */
+
+  }  
+  .contenedorInicio {
+    background-color: #FFEFEC;/*#f1dcda;*/
+    width: 90%;
+    margin-left: 5%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    box-shadow: 0px 20px 40px 10px rgba(159, 83, 83, 0.729); 
+   
+  }
+
   
+
+  .swiper-container {
+    width: 100%;
+    height: 400px; /* Ajusta la altura según tus necesidades */
+  }
+
+
+
+  .linea-superior {
+    border: none; /* Elimina el borde predeterminado */
+    border-top: 3px solid #990033; /* Color y grosor de la línea */
+    margin: 0; /* Elimina el margen */
+    padding: 0; /* Elimina el espaciado interno */
+    width: 100%;
+}
+

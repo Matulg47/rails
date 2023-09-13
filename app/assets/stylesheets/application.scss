@@ -13,9 +13,46 @@
  *= require_tree .
  *= require_self
  */
-/*body {
-   background-image: url('Fondo.webp');
+
+ .fadein{
+   animation: fadein 2s;
+ }
+ .fadeout{
+   animation: fadeout 1s;
+ }
+ @keyframes fadein{
+   from {opacity: 0;}
+   to {opacity: 1;}
+ }
+ @keyframes fadeout{
+   from {opacity: 1;}
+   to {opacity: 0;}
+ }
+
+
+
+ /* Define una clase para la animación de desplazamiento hacia la izquierda */
+.slide-left {
+   animation: slideLeft 1s ease-in-out forwards;
+}
+
+/* Define los keyframes para la animación de desplazamiento hacia la izquierda */
+@keyframes slideLeft {
+   0% {
+       transform: translateX(100%);
+   }
+   100% {
+       transform: translateX(0%);
+   }
+}
+
+body {
+   background-image: url('Fondo3.png');
    background-size: cover;
    background-repeat: no-repeat;
    background-attachment: fixed;
-    }*/
+    }
+
+    @import "bootstrap";
+    @import "carousel";
+

@@ -12,7 +12,7 @@ pedido_prueba = Pedido.find_or_create_by(producto: "torta")#, descripcion: "tort
 
 
 #aca arranco a cargar las tortas
-tort1=Torta.find_or_create_by(nombre: "Marquise Frutos Rojos", descripcion: "Brownie + dulce de leche + crema + frutos rojos", tamaño: nil, precio: nil, pedido_id: pedido_prueba.id)
-tort2=Torta.find_or_create_by(nombre: "Marquise Oreo", descripcion:" Brownie + dulce de leche + crema oreo + merengue italiano", tamaño: nil, precio: nil, pedido_id: pedido_prueba.id)
-tort3=Torta.find_or_create_by(nombre: "Marquise Praline", descripcion:" Brownie + dulce de leche + crema con nueces caramelizadas + merengue italiano", tamaño: nil, precio: nil, pedido_id: pedido_prueba.id)
-tort4=Torta.find_or_create_by(nombre: "Cheesecake de frutos rojos", descripcion:" falta descriocion" ,tamaño: nil, precio: nil, pedido_id: pedido_prueba.id)
+tort1=Cake.find_or_create_by(nombre: "Marquise Frutos Rojos", descripcion: "Brownie + dulce de leche + crema + frutos rojos", tamaño: nil, precio: nil, pedido_id: pedido_prueba.id)
+tort2=Cake.find_or_create_by(nombre: "Marquise Oreo", descripcion:" Brownie + dulce de leche + crema oreo + merengue italiano", tamaño: nil, precio: nil, pedido_id: pedido_prueba.id)
+tort3=Cake.find_or_create_by(nombre: "Marquise Praline", descripcion:" Brownie + dulce de leche + crema con nueces caramelizadas + merengue italiano", tamaño: nil, precio: nil, pedido_id: pedido_prueba.id)
+tort4=Cake.find_or_create_by(nombre: "Cheesecake de frutos rojos", descripcion:" falta descriocion" ,tamaño: nil, precio: nil, pedido_id: pedido_prueba.id)

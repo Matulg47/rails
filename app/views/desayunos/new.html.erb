@@ -1,9 +1,155 @@
-<h1>New desayuno</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+          text-align: center;
+        }
 
-<%= render "form", desayuno: @desayuno %>
+        .contenedor {
+            background-color: #f1dcda;
+            width: 800px;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: left;
+        }
 
-<br>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 600px;
+        }
 
-<div>
-  <%= link_to "Back to desayunos", desayunos_path %>
-</div>
+        .li2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .li2::after {
+            content: "......................................";
+            flex: 1;
+            color: #ccc;
+        }
+        .li2 span {
+          white-space: nowrap;
+      }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+    
+</head>
+<body>
+<%= form_for @desayuno, url:desayunos_path do |f| %>
+  <h1> <%= params[:nombre] %> sigamos con tu pedido</h1>
+    <div class="contenedor">
+    
+
+      <h1>Personaliza tu desayuno ✨</h1>
+        
+      <h2>Marquises</h2>
+      <ul>
+          <li class="li2"><%=check_box_tag "desayuno_items[]", "Marquise Frutos Rojos"%> 🧁 Marquise Frutos Rojos (Brownie + dulce de leche + crema + frutos rojos)</li>
+          <li class="li2"><%=check_box_tag "desayuno_items[]", "Marquise Oreo"%>  🧁 Marquise Oreo (Brownie + dulce de leche + crema oreo + Merengue Italiano)</li>
+          <li class="li2"><%=check_box_tag "desayuno_items[]", "Marquise Praline"%>  🧁 Marquise Praline (Brownie, dulce de leche, crema con nueces caramelizadas y merengue italiano)</li>
+          <li class="li2"><%=check_box_tag "desayuno_items[]", "Marquise clásica"%>  🧁 Marquise clásica (Brownie, dulce de leche y Merengue Italiano o Crema)</li>
+          <li class="li2"><%=check_box_tag "desayuno_items[]", "Marquise ferrero"%>  🧁 Marquise ferrero (Brownie, dulce de leche, nutella, crema y ferreros)</li>
+      </ul>
+        
+      <!-- Resto de las opciones... -->
+       
+      <h2>Cheesecakes</h2>
+      <ul>
+          <li class="li2"><input type="checkbox"> 🧁 Cheesecake de frutos rojos (10cm de diámetro) $1600</li>
+      </ul>
+
+      <h2>Cheesecakes</h2>
+      <ul>
+          <li class="li2"><input type="checkbox"> 🧁 Rogel (10cm de diámetro) $1700</li>
+      </ul>
+        
+      <h2>Tartas y Budines</h2>
+        <ul>
+            <li class="li2"><input type="checkbox"> 🥧 Lemon Pie</li>
+            <li class="li2"><input type="checkbox"> 🥧 Tarta Tofi</li>
+            <li class="li2"><input type="checkbox"> 🥧 Tarta Tofi con oreos</li>
+            <li class="li2"><input type="checkbox"> 🥧 Tarta de Ricota</li>
+            <li class="li2"><input type="checkbox"> 🥧 Crumble de Manzana</li>
+            <li class="li2"><input type="checkbox"> 🥧 Tarta de Ricota y frambuesas</li>
+            <li class="li2"><input type="checkbox"> 🥧 Tarta de Coco</li>
+            <li class="li2"><input type="checkbox"> 🥧 Pasta Frolla de Membrillo o Batata</li>
+            <li class="li2"><input type="checkbox"> 🍰Budín de Limón y frutos rojos + glasee de limón</li>
+            <li class="li2"><input type="checkbox"> 🍰Budín de banana, chocolate y nueces</li>
+            <li class="li2"><input type="checkbox"> 🍰Budín de vainilla y chips de chocolate </li>
+            <li class="li2"><input type="checkbox"> 🍰Budín de Limón + glasee de limón</li>
+            <li class="li2"><input type="checkbox"> 🍰Budín de banana y dulce de leche</li>
+            <li class="li2"><input type="checkbox"> Streusel Ula Hua (cuadrado de Limón súper húmedo, frutos rojos, crumble y glaseé de Limón) 3 UN </li>
+        </ul>
+        
+
+        <h2>Brownies</h2>
+        <ul>
+          <li class="li2"><input type="checkbox"> 🍫 Brownie $500</li>
+          <li class="li2"><input type="checkbox"> 🍫 Brownie con oreos $550</li>
+          <li class="li2"><input type="checkbox"> 🍫 Brownie con nueces $550</li>
+        </ul>
+
+
+        <h2>Cookies y otros</h2>
+        <ul>
+          <li class="li2"><input type="checkbox"> 🍪 Cookies de vainilla y chips de chocolate </li>
+          <li class="li2"><input type="checkbox"> 🍪 Cookies de limón y almendras</li>
+          <li class="li2"><input type="checkbox"> 🍪 Cookies de chocolate y chips de chocolate blanco</li>
+          <li class="li2"><input type="checkbox"> 🍪 Alfajor de Maicena x 3 UN</li>
+          <li class="li2"><input type="checkbox"> 🍪 Macaron x 2 UN (Pregunta x los diferentes sabores de macaron)</li>
+          <li class="li2"><input type="checkbox"> 🍪 Macaron x 6 UN (Pregunta x los diferentes sabores de macaron)</li>
+        </ul>
+        <!-- Resto de las secciones y opciones... -->
+        
+        <h2>Otros</h2>
+        <ul>
+            <li class="li2"><input type="checkbox"> 🧀 Chipá x 250g</li>
+            <li class="li2"><input type="checkbox"> 🧀 3 Chips de Jamón y Queso</li>
+            <li class="li2"><input type="checkbox"> 🍞 Panera de papel con pan integral o común casero, fresco  x 3 UN</li>
+            <li class="li2"><input type="checkbox"> 🍞 Panera de papel con tostadas varias de pan integral de masa madre, y pan común</li>
+            <li class="li2"><input type="checkbox"> 🍓 Mermelada de frutos rojos x 30 g</li>
+            <li class="li2"><input type="checkbox"> 🧀 Queso crema x 30 g</li>
+            <li class="li2"><input type="checkbox"> 🧈 Manteca x 2UN de 20g</li>
+            <li class="li2"><input type="checkbox"> 🍊 Jugo exprimido de Naranja (360cc) en Frasco con cartelito con nombre</li>
+            <li class="li2"><input type="checkbox"> ☕️ Pregunta por las opciones de taza</li>
+        </ul>
+        
+        <h2>Bandejas</h2>
+        <ul>
+            <li class="li2"><input type="checkbox"> 🎁 Bandeja de cartón con visor (incluye flores, velita y tarjeta con dedicatoria)</li>
+            <li class="li2"><input type="checkbox"> 🎁 Bandeja de Madera chica (incluye flores, velita y tarjeta con dedicatoria)</li>
+            <li class="li2"><input type="checkbox"> 🎁 Bandeja de Madera grande (incluye flores, velita y tarjeta con dedicatoria)</li>
+        </ul>
+        <input type="text" name="pedido_id"  value= <%= params[:pedido_id] %> /> 
+    <%= f.submit "Continuar", name: "cont", class: 'boton' %>
+    <%= f.submit "Finalizar pedido", name: "fin", class: 'boton' %>
+    </div>
+    <%end%>  
+</body>
+</html>

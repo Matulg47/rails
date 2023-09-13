@@ -1,57 +1,160 @@
-*{margin:0;padding:0}
+* {
+  margin: 0;
+  padding: 0;
+}
 
-body{
-   
+
+
+header .logoH {
+  float: left;
+  height: 100px;
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 250px;
+  max-height: 250px;
+  font-size: 50px;
+  line-height: 200px;
+  padding-left: 10px;
+  overflow: hidden;
 }
-* {}
-header .logo{
-    float:left;
-    height:200px;
-    width:200px;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 250px;
-    max-height: 250px;
-    font-size: 50px;
-    line-height: 200px;
+
+.navbar-brand {
+  /* Configuración para eliminar el espacio en blanco debajo del logo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-header{
-    widht: 50%;
-    overflow: hidden;
-    background: #d3b6b2;
-    margin: auto;
-    font-family: Arial, Helvetica, sans-serif;
+
+
+header {
+  width: 100%;
+  overflow: hidden;
+  background: #d3b6b2;
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+
+  /* Agrega la línea de fondo rosa oscuro en la parte inferior */
+  background-image: linear-gradient(to bottom, transparent, transparent, #990033);
+  background-size: 100% 3px;
+  /* Ajusta el grosor de la línea según tus preferencias */
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+
+   /* Agrega una sombra */
+ box-shadow: 0px 10px 10px rgba(159, 83, 83, 0.729);
+
+
 }
-ul, ol{
-    list-style:none;
+
+ul,
+ol {
+  list-style: none;
 }
+
 .nav li a {
-    background-color: #df7da1;
-    color: #fff;
-    text-decoration: none;
-    padding:10px 15px;
-    display:block;
+  background-color: #df7da1;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+}
+
+.nav>li {
+  float: left;
+}
+
+.nav li a:hover {
+  background-color: #cc4351;
+}
+
+/* Estilos para el menú desplegable */
+.nav li ul {
+  display: none;
+  /*position: absolute;*/
+  min-width: 140px;
+  background-color: #eccbd7;
+  /* Cambia el color de fondo del cuadro */
+  border: 1px solid #990033;
+  /* Agrega un borde alrededor del cuadro */
+  border-radius: 5px;
+  z-index: 1000; /* Agrega un valor alto al z-index para que esté por delante de otros elementos */
+
+  position: fixed;
+  width: 20%;
+  right: 0px; 
+  top: 110px;
+ 
+ }
+
+
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  /* Distribuye los elementos en el espacio */
+  padding: 0px;
+  height: 110px;
+
+
+
 
 }
 
-.nav > li{
-    float:left;
-}
-.nav li a:hover{
-    background-color: #cc4351;
-}
-.nav li ul{
-    display:none;
-    position:absolute;
-    min-width: 140px;
-}
-
-.nav li:hover > ul{
-    display: block;
-}
 /* Media query para dispositivos móviles */
 @media screen and (max-width: 480px) {
-    .container {
-      padding: 10px; /* Ajusta el espacio interno en dispositivos móviles */
-    }
+  .container {
+    padding: 0px;
+    /* Ajusta el espacio interno en dispositivos móviles */
+  }
+
+  .nav li ul {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    /* Ocupa todo el alto de la pantalla */
+    display: none;
+    background-color: #eccbd7;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 20px;
+  }
+
 }
+
+.botonH {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #eccbd7;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 40px;
+  margin-right: 50px;
+  /* Ajusta el margen derecho según tu preferencia */
+  text-align: center;
+}
+
+.nav li:hover>ul {
+  display: block;
+}
+
+
+/*.nav li ul {
+    position: fixed; /* Cambia la posición para fijar el cuadro 
+    top: 0; /* Coloca el cuadro en la parte superior de la pantalla 
+    left: 0; /* Mantiene el cuadro alineado a la izquierda 
+    width: 100%; /* Ocupa todo el ancho de la pantalla 
+    height: 100vh; /* Ocupa todo el alto de la pantalla 
+    display: none;
+    background-color: #eccbd7;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 20px;
+  }
+en esta opcion hay que borrar el min width*/

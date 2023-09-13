@@ -2,7 +2,7 @@
 <link rel "stylesheet" href="estilos3.css">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0 , minimum-scale=1.0">
 </head>
-<%= form_for @tarta, url:tarta_path do |f| %>
+<%= form_for @tarta, url:tarts_path do |f| %>
     <h1> <%= params[:nombre] %> sigamos con tu pedido de tartas </h1>
     <div class="contenedor">  
         <div class="lista">
@@ -19,18 +19,8 @@
                     <th>Cantidad</th>
                 </tr>
                 <tr>
-                    <td> <label class="texto" > 
-                    Individual(10cm de diámetro)
-                    </label> </td>
-                    <td></td>
-                    <td> <label class="prueba">
-                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadLPC'  %>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
                     <td><label>
-                        Mediana(18cm de diámetro, 6 porciones)
+                        Mediana(14cm de diámetro, 2 porciones)
                         </label>  
                     </td>
                     <td></td>
@@ -41,7 +31,7 @@
                 </tr>
                 <tr>
                     <td><label>
-                        XL(28cm de diámetro, 8porciones)
+                        XL(20cm de diámetro, 8 porciones)
                         </label>  
                     </td>
                     <td></td>
@@ -73,19 +63,10 @@
                     <th></th>
                     <th>Cantidad</th>
                 </tr>
-                <tr>
-                    <td> <label class="texto" > 
-                    Individual(10cm de diámetro)
-                    </label> </td>
-                    <td></td>
-                    <td> <label class="prueba">
-                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTTC'  %>
-                        </label>
-                    </td>
-                </tr>
+               
                 <tr>
                     <td><label>
-                    Mediana(18cm de diámetro, 6 porciones)
+                    Mediana(14cm de diámetro, 2 porciones)
                     </label>  
                     </td>
                     <td></td>
@@ -96,7 +77,7 @@
                 </tr>
                 <tr>
                     <td><label>
-                        XL(28cm de diámetro, 8porciones)
+                        XL(20cm de diámetro, 8 porciones)
                         </label>  
                     </td>
                     <td></td>
@@ -126,19 +107,10 @@
                 <th></th>
                 <th>Cantidad</th>
             </tr>
-            <tr>
-                <td> <label class="texto" > 
-                Individual(10cm de diámetro)
-                </label> </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCMC'  %>
-                    </label>
-                </td>
-            </tr>
+           
             <tr>
                 <td><label>
-                Mediana(18cm de diámetro, 6 porciones)
+                Mediana(14cm de diámetro, 2 porciones)
                 </label>  
                 </td>
                 <td></td>
@@ -149,7 +121,7 @@
             </tr>
             <tr>
                 <td><label>
-                    XL(28cm de diámetro, 8porciones)
+                    XL(20cm de diámetro, 8 porciones)
                     </label>  
                 </td>
                 <td></td>
@@ -178,18 +150,8 @@
                 <th>Cantidad</th>
             </tr>
             <tr>
-                <td> <label class="texto" > 
-                Individual(10cm de diámetro)
-                </label> </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTCC'  %>
-                    </label>
-                </td>
-            </tr>
-            <tr>
                 <td><label>
-                Mediana(18cm de diámetro, 6 porciones)
+                Mediana(14cm de diámetro, 2 porciones)
                 </label>  
                 </td>
                 <td></td>
@@ -200,7 +162,7 @@
             </tr>
             <tr>
                 <td><label>
-                    XL(28cm de diámetro, 8porciones)
+                    XL(20cm de diámetro, 8 porciones)
                     </label>  
                 </td>
                 <td></td>
@@ -211,56 +173,8 @@
             </tr>
         </table>
     </div>
-    <div class="lista">
-        <h2>Tarta de Frutilla</h2 >
+   
     
-        <figure>
-            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-            <figcaption> Descripcion
-            </figcaption> 
-        </figure>  
-    
-        <table>
-     
-            <tr>
-                <th>Opciones</th>
-                <th></th>
-                <th>Cantidad</th>
-            </tr>
-            <tr>
-                <td> <label class="texto" > 
-                Individual(10cm de diámetro)
-                </label> </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFC'  %>
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td><label>
-                Mediana(18cm de diámetro, 6 porciones)
-                </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFM'  %>
-                </label>   
-                </td>
-            </tr>
-            <tr>
-                <td><label>
-                    XL(28cm de diámetro, 8porciones)
-                    </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFG'  %>
-                </label>   
-                </td>
-            </tr>
-        </table>
-    </div> 
 
 
     <div class="lista">
@@ -279,19 +193,10 @@
                 <th></th>
                 <th>Cantidad</th>
             </tr>
-            <tr>
-                <td> <label class="texto" > 
-                Individual(10cm de diámetro)
-                </label> </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTOC'  %>
-                    </label>
-                </td>
-            </tr>
+            
             <tr>
                 <td><label>
-                Mediana(18cm de diámetro, 6 porciones)
+                Mediana(14cm de diámetro, 2 porciones)
                 </label>  
                 </td>
                 <td></td>
@@ -302,7 +207,7 @@
             </tr>
             <tr>
                 <td><label>
-                    XL(28cm de diámetro, 8porciones)
+                    XL(20cm de diámetro, 8 porciones)
                     </label>  
                 </td>
                 <td></td>
@@ -329,19 +234,10 @@
                 <th></th>
                 <th>Cantidad</th>
             </tr>
-            <tr>
-                <td> <label class="texto" > 
-                Individual(10cm de diámetro)
-                </label> </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadRC'  %>
-                    </label>
-                </td>
-            </tr>
+            
             <tr>
                 <td><label>
-                Mediana(18cm de diámetro, 6 porciones)
+                Mediana(14cm de diámetro, 2 porciones)
                 </label>  
                 </td>
                 <td></td>
@@ -352,7 +248,7 @@
             </tr>
             <tr>
                 <td><label>
-                    XL(28cm de diámetro, 8porciones)
+                    XL(20cm de diámetro, 8 porciones)
                     </label>  
                 </td>
                 <td></td>
@@ -381,35 +277,26 @@
                 <th></th>
                 <th>Cantidad</th>
             </tr>
-            <tr>
-                <td> <label class="texto" > 
-                Individual(10cm de diámetro)
-                </label> </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFOC'  %>
-                    </label>
-                </td>
-            </tr>
+            
             <tr>
                 <td><label>
-                Mediana(18cm de diámetro, 6 porciones)
+                Mediana(14cm de diámetro, 2 porciones)
                 </label>  
                 </td>
                 <td></td>
                 <td> <label class="prueba">
-                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFOM'  %>
+                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTRFM'  %>
                     </label>   
                 </td>
             </tr>
             <tr>
                 <td><label>
-                    XL(28cm de diámetro, 8porciones)
+                    XL(20cm de diámetro, 8 porciones)
                     </label>  
                 </td>
                 <td></td>
                 <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTFOG'  %>
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTRFG'  %>
                 </label>   
                 </td>
             </tr>
@@ -433,19 +320,10 @@
                 <th></th>
                 <th>Cantidad</th>
             </tr>
-            <tr>
-                <td> <label class="texto" > 
-                Individual(10cm de diámetro)
-                </label> </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadPFC'  %>
-                    </label>
-                </td>
-            </tr>
+           
             <tr>
                 <td><label>
-                Mediana(18cm de diámetro, 6 porciones)
+                Mediana(10cm de diámetro, 2 porciones)
                 </label>  
                 </td>
                 <td></td>
@@ -456,7 +334,7 @@
             </tr>
             <tr>
                 <td><label>
-                    XL(28cm de diámetro, 8porciones)
+                    XL(20cm de diámetro, 8 porciones)
                     </label>  
                 </td>
                 <td></td>
@@ -491,7 +369,7 @@
                 </label> </td>
                 <td></td>
                 <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadPF'  %>
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTMF'  %>
                     </label>
                 </td>
             </tr>
@@ -502,7 +380,8 @@
 
     <div class="lista">
     <input type="text" name="pedido_id"  value= <%= params[:pedido_id] %> />
-    <%= f.submit "Continuar", class: 'boton' %>
-    </div> 
+    <%= f.submit "Continuar", name: "cont", class: 'boton' %>
+    <%= f.submit "Finalizar pedido", name: "fin", class: 'boton' %>
+ </div> 
     </div>
 <% end %>

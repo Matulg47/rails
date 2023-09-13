@@ -1,19 +1,63 @@
-<link rel "stylesheet" href="estilos_home.css">
-<%= image_tag "cami2.png", title: "Logo", class: "logo", style: "max-width:100%;width:auto;height:auto;"%>
-      
-<div>
-    <h1>Bienvenido a la pagina web de Ulhaua cakes </h1>
-    <h2>Comencemos tu pedido</h2>
-    <h2>Todos los pedidos deben hacerse con un minimo de 48hs de anticipacion!</h2>
 
-    <a href='/pedidos/new'class="boton"> Hacer pedido</a>
-    <a href='/stores/show'class="boton"> Changuito</a>
-    <a href='https://wa.me/2213648266?text=hola probando' class="boton2">WSP</a>
-    <h4> </h4>
-    <h4></h4>  
 
-    <p> </p>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<link rel="stylesheet" href="/assets/estilos_home.css">
+    <title>Página de Inicio</title>
+    <script src="https://kit.fontawesome.com/039d04bc54.js" crossorigin="anonymous"></script>
     
 
+
+</head>
+
+<body class="">
+<!--<%= image_tag "cami2.png", title: "Logo", class: "logo", style: "max-width:100%;width:auto;height:auto;"%> -->
+
+
+    <div class="contenedorInicio">
+    <hr class="linea-superior">
+    <h1 style="text-align: center; font-family: 'Bodoni Moda', serif; color: #7C5152; padding-top: 10px; font-weight: 600; font-size: 36px;"><i class="fa-solid fa-cake-candles fa-bounce fa-xl" style="color: #d3b5b3;"></i>  
+    Bienvenido a la página web de
+    <i class="fa-solid fa-cake-candles fa-bounce fa-xl" style="color: #d3b5b3;"></i>  </h1>
+      
+    <h1 style="text-align: center; font-family: 'Dancing Script', cursive; color: #990033; padding-bottom: 15px; font-weight: 600; font-size: 48px;">UlahuaCakes</h1>   
+    <%= render 'shared/slideshow' %>
+    <hr class="linea-superior">
+    <h1 style="text-align: center; font-family: 'Dancing Script', cursive; color: #990033;  font-weight: 600; font-size: 48px;">Anticipación para realizar pedidos</h1>   
+    
+    <p style="text-align: center; font-family: 'Spartan',sans-serif; color: #990033;margin-bottom:0; font-weight: 500; font-size: 15px;">Necesitamos un mínimo de 2 días para preparar tu pedido.
+    <br>  De esta manera, podes elegir lo que quieras! 
+    <br> Pero, si no contás con esos dos días de anticipación, no dejes de consultarnos… </br> </br> </p>  
+    <div class="centrar"> 
+    <%= link_to 'Hacer pedido', new_pedido_path(pedido_id: -1), class: 'boton' %>
+
+    </div>
+       
+        
+    <!-- <a href='/stores/show'class="boton"> Changuito</a>-->
+    <!--  <a href='https://wa.me/2213648266?text=Hola Cami! Necesito hacerte una consulta sobre los pedidos' class="boton">WSP</a>-->
+    
+    
+    
+        <hr class="linea-superior">
+        <h1 style="text-align: center; font-family: 'Bodoni Moda', serif; color: #990033; padding-top: 10px; font-weight: 600; font-size: 36px;">FORMAS DE PAGO DISPONIBLES</h1>
    
-</div>
+        <p style="text-align: center; font-family: 'Spartan',sans-serif; color: #990033; margin:0; font-weight: 500; font-size: 15px;">Las formas de pago
+        que podemos ofrecerte son:</p> 
+        <p style="text-align: center; font-family: 'Spartan',sans-serif; color: #990033; margin:0; font-weight: 900; font-size: 15px;">Efectivo y Débito 
+       
+        <br> Mercado Pago</br></p> 
+        <p style="text-align: center; font-family: 'Spartan',sans-serif; color: #990033; margin-bottom:15px; font-weight: 500; font-size: 15px;">(débito, transferencia, QR o envío de dinero)</p> 
+        
+    
+   
+    <%= render 'shared/contacto' %>
+    </div>
+   
+   
+</body>
+
+</html>

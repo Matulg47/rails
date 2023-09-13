@@ -21,15 +21,30 @@ class DesayunosController < ApplicationController
 
   # POST /desayunos or /desayunos.json
   def create
-    @desayuno = Desayuno.new(desayuno_params)
-
-    respond_to do |format|
+    selected_items = params[:desayuno_items]
+    if params[:desayuno_items].present?
+      @desayuno = Desayuno.new(descripcion: selected_items.join(", ")) # Convierte los elementos en una cadena separada por comas
+      @desayuno.pedido_id= params[:pedido_id]
+      puts 'PROBANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'
       if @desayuno.save
-        format.html { redirect_to desayuno_url(@desayuno), notice: "Desayuno was successfully created." }
-        format.json { render :show, status: :created, location: @desayuno }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @desayuno.errors, status: :unprocessable_entity }
+        if (params[:cont])
+          puts 'PROBANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'
+          redirect_to new_pedido_path(pedido_id: params[:pedido_id]), notice: "Continuar"           
+        end
+        if (params[:fin]) 
+          redirect_to pedido_path(id: params[:pedido_id]), notice: "Finalizando pedido"         
+          
+        end
+        
+      end
+    else
+      if (params[:cont])
+        puts 'PROBANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'
+        redirect_to new_pedido_path(pedido_id: params[:pedido_id]), notice: "Continuar"           
+      end
+      if (params[:fin]) 
+        redirect_to pedido_path(id: params[:pedido_id]), notice: "Finalizando pedido"         
+        
       end
     end
   end

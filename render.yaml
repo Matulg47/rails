@@ -1,18 +1,18 @@
 databases:
   - name: rails
-    databaseName: rails
-    user: rails
+    databaseName: rails_n21k
+    user: matu47
 
 services:
   - type: web
-    name: rails
+    name: Ulahua Cakes
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: rails
+          name: rails_n21k
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false

@@ -3,9 +3,5 @@
   "scripts": {
     "build": "babel src -d lib",
     "test": "jest"
-  },
-  "devDependencies": {
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
   }
 }

@@ -50,10 +50,12 @@ figure:hover figcaption{
 }
 
 .lista{
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  
+
+  
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 
@@ -108,7 +110,7 @@ figure:hover figcaption{
 .contenido {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  
 }
 
 .imagen {
@@ -157,4 +159,49 @@ figure:hover figcaption{
   text-align: center; /* Centra el texto dentro del botón */
   margin-bottom: 0px;
   float: left;
+}
+.contenido_inv {
+  
+  background-color: rgba(215, 168, 135, 0.35); /* Color D7A887 con 50% de opacidad */
+ 
+}
+@media screen and (min-width: 768px) {
+  .contenido_inv {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(215, 168, 135, 0.35); /* Color D7A887 con 50% de opacidad */
+    margin-bottom: 10px;
+
+  }
+  .contenido{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    margin-bottom: 10px;
+    
+  }
+
+  .imagen {
+    order: 2; /* Cambia el orden de la imagen a la derecha */
+    margin-left: 15px;
+  }
+
+  .descripcion {
+    order: 1; /* Cambia el orden de la descripción a la izquierda */
+    padding-top: 15px;
+   
+  }
+
+ 
+ 
+
+  
+  
+}
+.precio-label {
+  display: inline;
 }

@@ -15,6 +15,7 @@ class CakesController < ApplicationController
           
             @torta=Cake.new
             @opciones = (1..10).to_a
+            @precios=Precio.all
             
             
         end
@@ -100,10 +101,11 @@ class CakesController < ApplicationController
             @torta.pedido_id= params[:pedido_id]
             if (params[:cont])
                 puts 'PROBANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'
-                redirect_to new_pedido_path(pedido_id: params[:pedido_id]), notice: "Continuar"           
+                redirect_to new_pedido_path(pedido_id: params[:pedido_id], protocol: 'http'), notice: "Continuar"           
             end
             if (params[:fin]) 
-                redirect_to pedido_path(id: params[:pedido_id]), notice: "Finalizando pedido"         
+                redirect_to pedido_path(id: params[:pedido_id], protocol: 'http'), notice: "Finalizando pedido"         
+                
                 
             end
         end

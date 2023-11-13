@@ -22,56 +22,48 @@
         <section class="galeria" >
             <figura>
                 <%= image_tag "tortas.jpeg", title: "torta", class: "logo"%>         
-                <figcaption2> <h3 class="display-4" style="font-family: LEMON MILK; font-size: 30px; text-shadow: 2px 2px 10px white;">TORTAS</h3>
-                </figcaption2> 
-               
-                    <%= f.submit "", name: "mas_tortas", class: "boton2"%>
-               
-               
+                <figcaption2> 
+                    <h3 class="display-4" style="font-family: 'Dancing Script', cursive;font-size: 25px; text-shadow: 2px 2px 10px white;">
+                    TORTAS</h3>
+                </figcaption2>      
+                    <%= f.submit "", name: "mas_tortas", class: "boton2"%>        
             </figura>
             <figura>
-                            <%= image_tag "tartas.jpeg", title: "tarta", class: "logo"%>       
-                            <figcaption2> <h3 class="display-4" style="font-family: LEMON MILK; font-size: 30px; text-shadow: 2px 2px 10px white;">TARTAS</h3>
-                            </figcaption2> 
-                            <% if !params[:pedido_id].present?  %>
-                                <%= f.submit "", name: "mas_tartas", class: "boton2" %>
-                            <% else %>
-                                <%= link_to '', new_tart_path(pedido_id: @pedido.id, nombre: @pedido.a_nombre_de), class: "boton2" %>
-                            <% end%>
-                        </figura>
-                        <figura>
-                        <%= image_tag "macarons.jpeg", title: "macaroon", class: "logo"%>       
-                        <figcaption2> <h3 class="display-4" style="font-family: LEMON MILK; font-size: 30px; text-shadow: 2px 2px 10px white;">MACAROONS</h3>
-                        </figcaption2> 
-                        <% if !params[:pedido_id].present?  %>
-                            <%= f.submit "", name: "mas_mac", class: "boton2" %>
-                        <% else %>
-                            <%= link_to '', new_macaroon_path(pedido_id: @pedido.id, nombre: @pedido.a_nombre_de), class: "boton2" %>
-                        <% end%>
-                    </figura>
-                    <figura>
-                    <%= image_tag "chipa.jpeg", title: "chipa", class: "logo"%>
-                    <figcaption2> <h3 class="display-4" style="font-family: LEMON MILK; font-size: 30px; text-shadow: 2px 2px 10px white;">OTROS</h3>
-                    </figcaption2> 
-                    <% if !params[:pedido_id].present?  %>
+                <%= image_tag "tartas.jpeg", title: "tarta", class: "logo"%>       
+                <figcaption2> <h3 class="display-4" style="font-family: 'Dancing Script', cursive; font-size: 25px; text-shadow: 2px 2px 10px white;">TARTAS</h3>
+                </figcaption2> 
+                   <%= f.submit "", name: "mas_tartas", class: "boton2" %>
+            </figura>
+            <figura>
+                <%= image_tag "cookies.webp", title: "macaroon", class: "logo"%>       
+                <figcaption2> <h3 class="display-4" style="font-family: 'Dancing Script', cursive; font-size: 25px; text-shadow: 2px 2px 10px white;">COOKIES</h3>
+                </figcaption2> 
+                    
+                        <%= f.submit "", name: "mas_mac", class: "boton2" %>
+                   
+            </figura>
+            <figura>
+                    <%= image_tag "seccion_budines.jpg", title: "chipa", class: "logo"%>
+                    <figcaption2> 
+                    <h3 class="display-4" style="font-family: 'Dancing Script', cursive;font-size: 25px; text-shadow: 2px 2px 10px white;">
+                    BUDINES, BROWNIES Y STREUSELS</h3>
+                </figcaption2> 
                         <%= f.submit "", name: "mas_otros", class: "boton2" %>
-                    <% else %>
-                        <%= link_to '', new_otro_path(pedido_id: @pedido.id, nombre: @pedido.a_nombre_de), class: "boton2" %>
-                    <% end%>
+                    
                 </figura>
                 <figura>
                 <%= image_tag "desayuno.jpeg", title: "desayuno", class: "logo"%>
-                <figcaption2> <h3 class="display-4" style="font-family: LEMON MILK; font-size: 20px; text-shadow: 2px 2px 10px white;">DESAYUNOS</h3>
+                <figcaption2> <h3 class="display-4" style="font-family: 'Dancing Script', cursive;font-size: 25px; text-shadow: 2px 2px 10px white;">DESAYUNOS</h3>
                 </figcaption2> 
-                <% if !params[:pedido_id].present?  %>
                     <%= f.submit "", name: "mas_desa", class: "boton2" %>
-                <% else %>
-                    <%= link_to '', new_desayuno_path(pedido_id: @pedido.id, nombre: @pedido.a_nombre_de), class: "boton2" %>
-                <% end%>
+               
             </figura>
             </section>
             <%= render 'shared/contacto' %>
     </div>
+    <% if params[:pedido_id] != "-1" %>
+        <%= render 'shared/changuito' %>
+    <%end%>
     
 <% end %>
 </body>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :fotos
+  resources :precios
   resources :tarts
   resources :otros
   resources :telegrams
@@ -12,4 +14,8 @@ Rails.application.routes.draw do
   get '/pedidos/continuar', to: 'pedidos#continuar', as: :continuar_pedidos
   # Defines the root path route ("/")
   root "homes#inicio"
+  get '/admin', to:'precios#admin'
+  post 'identificando', to: 'precios#identificando'
+  get '/newFotoD', to: 'fotos#newFotoD'
+  post 'subiendo', to:'fotos#subiendo'
 end

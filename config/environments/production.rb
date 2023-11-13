@@ -4,7 +4,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
  
  #config.hosts << "ulahua.up.railway.app"
- #config.hosts << "cv7jz10p-3000.brs.devtunnels.ms"
+ config.hosts << "cv7jz10p-3000.brs.devtunnels.ms"
 
  
   # Code is not reloaded between requests.

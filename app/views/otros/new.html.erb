@@ -1,9 +1,486 @@
-<h1>New otro</h1>
+<script>
+function mostrarTablaCantidad(tipo) {
+    var tablaCantidad = document.getElementById('tablaCantidad ' + tipo);
+    var descripElements = document.getElementsByClassName('descripcion ' + tipo);
+    var descrip = descripElements[0]; // Esto seleccionará el primer elemento con esa clase
+    var imagen = document.querySelector('.imagen.' + tipo); // Selecciona el div con la clase "imagen" y la clase específica "tipo"
+   
+    if (tablaCantidad.style.display === 'none' || tablaCantidad.style.display === '') {
+        imagen.classList.remove('agrandar')
+        imagen.classList.add('encoger'); // Agrega la clase para encoger la imagen
+     
+    setTimeout(function () {
+      tablaCantidad.style.display = 'table'; // Muestra la tabla
+      setTimeout(function () {
+        tablaCantidad.style.opacity = '1';
+    }, 100); // Pequeño retraso para permitir la animación
+      tablaCantidad.style.transform = 'translateY(5px)'; // Desplazamiento hacia abajo
+      descrip.classList.add('mostrar'); // Agrega la clase para mostrar la descripción
+    }, 100); // Espera 0.5 segundos para mostrar la tabla después de encoger la imagen
+  } else {
+    tablaCantidad.style.opacity = '0'; // Hace que la tabla sea transparente
+    tablaCantidad.style.transform = 'translateY(-20px)'; // Desplazamiento hacia arriba
+    descrip.classList.remove('mostrar'); // Remueve la clase para ocultar la descripción
+    setTimeout(function () {
+      tablaCantidad.style.display = 'none'; // Oculta la tabla después de la transición
+    }, 300); // Espera hasta que termine la transición (0.3 segundos)
 
-<%= render "form", otro: @otro %>
+    setTimeout(function () {
+      imagen.classList.add('agrandar'); 
+      imagen.classList.remove('encoger')// Remueve la clase para encoger la imagen
+      imagen.style.opacity = '1'; // Hace que la imagen sea visible nuevamente
+    }, 200); // Espera 0.6 segundos para mostrar la imagen nuevamente
+  }
+}
+</script>
 
-<br>
 
-<div>
-  <%= link_to "Back to otros", otros_path %>
+
+
+
+
+<head>
+    <link rel "stylesheet" href="estilos3.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0 , minimum-scale=1.0">
+</head>
+<%= form_for @otro, url:otros_path do |f| %>
+    <h1> <%= params[:nombre] %> sigamos con tu pedido de tortas </h1>
+<div class="contenedor">  
+    <div class="lista">
+        <div class="contenido">
+            <div class="imagen BLFR">
+                <figure>
+                    <%= image_tag "sin-imagen.png", title: "Marquise Frutos Rojos", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>     
+                    <figcaption> Descripcion
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion BLFR">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Budín de Limón y Frutos Rojos</h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('BLFR')" type="button"  style="margin-left: 50px;">Llevar!</button>
+                    <table id="tablaCantidad BLFR" class="tablaCantidad"  style="margin-left: 40px;">
+                        <tr>
+                            <th>Opciones</th>
+                            <th></th>
+                            <th>Cantidad</th>
+                        </tr>
+                        <tr>
+                            <td> <label class="texto" > 
+                                Chico ( 9 x 18 cm )
+                            </label> </td>
+                            <td></td>
+                            <td> <label class="prueba">
+                                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBLFRC'  %>
+                                    <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Budín de Limón y Frutos Rojos").precioC%> c/u</h1>             
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td> <label class="texto" > 
+                          Grande (8,5 x 22cm)
+                          </label> </td>
+                          <td></td>
+                          <td> <label class="prueba">
+                                  <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBLFRG'  %>
+                                  <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                  $<%= Precio.find_by(nombre:"Budín de Limón y Frutos Rojos").precioG%> c/u</h1> 
+                              </label>
+                          </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        <div>
+    </div>
+
+
+    <div class="lista">
+        <div class="contenido_inv">
+            <div class="imagen BBCN">
+                <figure>
+                    <%= image_tag "sin-imagen.png", title: "Marquise Oreo", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                    <figcaption> Descripcion
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion BBCN">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Budín de Banana, Chocolate y Nueces </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('BBCN')" type="button">Llevar!</button>
+                <table id="tablaCantidad BBCN" class="tablaCantidad" style="margin-left: 50px;">
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+                    <tr>
+                        <td> <label class="texto" > 
+                        Chico(9 x 18cm)
+                        </label> </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBBCNC'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Budín de Banana, Chocolate y Nueces").precioC%> c/u</h1>  
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td> <label class="texto"> 
+                      Grande (8,5 x 22cm)
+                      </label> </td>
+                      <td></td>
+                      <td> <label class="prueba">
+                              <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBBCNG'  %>
+                              <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                              $<%= Precio.find_by(nombre:"Budín de Banana, Chocolate y Nueces").precioG%> c/u</h1> 
+                          </label>
+                      </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+        
+   
+    <div class="lista">
+        <div class="contenido">
+            <div class="imagen BVCC">
+                <figure>
+                    <%= image_tag "sin-imagen.png", title: "Marquise Praline", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                    <figcaption> Descripcion
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion BVCC">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Budín de Vainilla y Chips de Chocolate  </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('BVCC')" type="button"  style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad BVCC" class="tablaCantidad"  style="margin-left: 40px;">
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+                    <tr>
+                        <td> <label class="texto" > 
+                        Chico(9 x 18cm)
+                        </label> </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBVCC'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Budín de Vainilla y Chips de Chocolate").precioC%> c/u</h1>  
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td> <label class="texto"> 
+                      Grande (8,5 x 22cm)
+                      </label> </td>
+                      <td></td>
+                      <td> <label class="prueba">
+                              <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBVCCG'  %>
+                              <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                              $<%= Precio.find_by(nombre:"Budín de Vainilla y Chips de Chocolate").precioG%> c/u</h1> 
+                          </label>
+                      </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <div class="lista">
+        <div class="contenido_inv">
+            <div class="imagen BL">
+              <figure>
+                  <%= image_tag "sin-imagen.png", title: "Cheesecake", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                  <figcaption> falta ingredientes
+                  </figcaption> 
+              </figure>  
+            </div>
+            <div class="descripcion BL">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Budín de Limón </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('BL')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad BL" class="tablaCantidad" style="margin-left: 40px;">
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+                    <tr>
+                        <td> <label class="texto" > 
+                        Chico(9 x 18cm)
+                        </label> </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBLC'  %>
+                            <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Budín de Limón").precioC%> c/u</h1> 
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td> <label class="texto"> 
+                      Grande (8,5 x 22cm)
+                      </label> </td>
+                      <td></td>
+                      <td> <label class="prueba">
+                              <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBLG'  %>
+                              <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                              $<%= Precio.find_by(nombre:"Budín de Limón").precioG%> c/u</h1> 
+                          </label>
+                      </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="lista">
+        <div class="contenido">
+            <div class="imagen BBDL">
+              <figure>
+                  <%= image_tag "sin-imagen.png", title: "Marquise Clásica", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                  <figcaption> Descripcion
+                  </figcaption> 
+              </figure>  
+            </div>
+            <div class="descripcion BBDL">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Budín de Banana y Dulce de Leche </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('BBDL')" type="button"  style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad BBDL" class="tablaCantidad"  style="margin-left: 40px;">
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+                    <tr>
+                        <td> <label class="texto" > 
+                        Chico (9 x 18cm)
+                        </label> </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBBDL'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Budín de Banana y Dulce de Leche").precioC%> c/u</h1> 
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <label class="texto" > 
+                        Grande (8,5 x 22cm)
+                        </label> </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBBDLG'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Budín de Banana y Dulce de Leche").precioG%> c/u</h1> 
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+    </div>
+
+  
+   
+    <div class="lista">
+        <div class="contenido_inv">
+            <div class="imagen S">
+                <figure>
+                    <%= image_tag "streusel.jpeg", title: "Marquise Ferrero", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                    <figcaption> Cuadrado de Limón súper húmedo, frutos rojos, crumble y glaseé de Limón
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion S">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Streusel Ula Hua </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('S')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad S" class="tablaCantidad" style="margin-left: 50px;">
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+                    <tr>
+                        <td> <label class="texto" > 
+                        3 Unidades
+                        </label> </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadSC'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Streusel Ula Hua").precioC%> c/u</h1> 
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>
+                            12 Unidades
+                            </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadSG'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Streusel Ula Hua").precioG%> c/u</h1> 
+                            </label>   
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+   
+
+   
+    <div class="lista">
+        <div class="contenido">
+            <div class="imagen B">
+              <figure>
+                  <%= image_tag "sin-imagen.png", title: "Rogel", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                  <figcaption> Descripcion
+                  </figcaption> 
+              </figure>  
+            </div>
+            <div class="descripcion B">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Brownie </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('B')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad B" class="tablaCantidad" style="margin-left: 40px;">
+                    <tr>
+                    <th>Opciones</th>
+                    <th></th>
+                    <th>Cantidad</th>
+                </tr>
+                <tr>
+                    <td> <label class="texto" > 
+                    Individual
+                    </label> </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadB'  %>
+                            <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                            $<%= Precio.find_by(nombre:"Brownie").precioC%> c/u</h1> 
+                            </label>
+                    </td>
+                </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="lista">
+      <div class="contenido_inv">
+        <div class="imagen BO">
+            <figure>
+                <%= image_tag "sin-imagen.png", title: "Marquise Ferrero", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                <figcaption> Descripcion
+                </figcaption> 
+            </figure>  
+        </div>
+        <div class="descripcion BO">
+            <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+            Brownie con Oreos </h1>
+            <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+            Algun texto descriptivo si queres poner aca... </p>
+            <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('BO')" type="button" style="margin-left: 50px;">Llevar!</button>
+            <table id="tablaCantidad BO" class="tablaCantidad" style="margin-left: 50px;">
+                <tr>
+                    <th>Opciones</th>
+                    <th></th>
+                    <th>Cantidad</th>
+                </tr>
+                <tr>
+                    <td> <label class="texto" > 
+                    Porcion
+                    </label> </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBO'  %>
+                            <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                            $<%= Precio.find_by(nombre:"Brownie con Oreos").precioC%> c/u</h1> 
+                        </label>
+                    </td>
+                </tr>
+                </tr>
+            </table>
+        </div>
+      </div>
+    </div> 
+
+    <div class="lista">
+        <div class="contenido">
+            <div class="imagen BN">
+              <figure>
+                  <%= image_tag "sin-imagen.png", title: "Rogel", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                  <figcaption> Descripcion
+                  </figcaption> 
+              </figure>  
+            </div>
+            <div class="descripcion BN">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Brownie con Nueces </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('BN')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad BN" class="tablaCantidad" style="margin-left: 40px;">
+                    <tr>
+                    <th>Opciones</th>
+                    <th></th>
+                    <th>Cantidad</th>
+                </tr>
+                <tr>
+                    <td> <label class="texto" > 
+                    Individual
+                    </label> </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadBN'  %>
+                            <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                            $<%= Precio.find_by(nombre:"Brownie con Nueces").precioC%> c/u</h1> 
+                            </label>
+                    </td>
+                </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+   
+    
+    <div class="lista">
+<input type="text" name="pedido_id"  value= <%= params[:pedido_id] %> />
+
+
+<%= f.submit "Continuar", name: "cont", class: 'boton' %>
+<%= f.submit "Finalizar pedido", name: "fin", class: 'boton' %>
+</div> 
 </div>
+<%= render 'shared/contacto' %>
+<% end %>

@@ -1,0 +1,12 @@
+.fixed-button {
+    position: fixed;
+    right: 0;
+    top: 20%; /* Puedes ajustar la posición vertical según tus preferencias */
+    transform: translateY(-50%); /* Esto centra verticalmente el botón */
+    background-color: #d3b6b2; /* Color de fondo del botón */
+    color: #d3b6b2; /* Color del texto del botón */
+    padding: 15px 20px; /* Espaciado del botón */
+    border: 2px solid #CCA297;
+    border-radius: 5px; /* Borde redondeado */
+    cursor: pointer;
+  }

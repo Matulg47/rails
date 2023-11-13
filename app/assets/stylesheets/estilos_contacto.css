@@ -2,7 +2,7 @@
     background-color: #d3b6b2;
     padding: 20px;
     text-align: center;
-    color: #990033; /* Color de texto oscuro */
+    color: #7C5152; /* Color de texto oscuro */
 }
 
 .contacto h2 {
@@ -21,13 +21,13 @@
 
 .redes-sociales a {
     text-decoration: none;
-    color: #990033; /* Color de enlace oscuro */
+    color: #7C5152; /* Color de enlace oscuro */
     font-weight: bold;
 }
 
 .linea-superior {
     border: none; /* Elimina el borde predeterminado */
-    border-top: 3px solid #990033; /* Color y grosor de la línea */
+    border-top: 3px solid #CCA297; /* Color y grosor de la línea */
     margin: 0; /* Elimina el margen */
     padding: 0; /* Elimina el espaciado interno */
 }

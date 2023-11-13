@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap');
 .boton {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #990033;
+    background-color: #CCA297;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
@@ -54,9 +55,74 @@
 
   .linea-superior {
     border: none; /* Elimina el borde predeterminado */
-    border-top: 3px solid #990033; /* Color y grosor de la línea */
+    border-top: 3px solid #CCA297; /* Color y grosor de la línea */
     margin: 0; /* Elimina el margen */
     padding: 0; /* Elimina el espaciado interno */
     width: 100%;
 }
 
+.blog {
+  display: flex; /* Utiliza el modelo de caja flexible */
+  align-items: flex-start; /* Alinea verticalmente los elementos en el centro */
+  width: 90%;
+ 
+}
+
+.blog_foto {
+  max-width: 50%; /* O ajusta el valor según tus necesidades */
+  height: auto;
+}
+
+.blog_texto_titulo {
+  text-align: center; /* Puedes cambiarlo si lo necesitas */
+  font-family: 'Dancing Script', cursive;
+  color: #7C5152;
+  font-weight: 600;
+  font-size: 3em;
+  flex: 1; /* El texto ocupará el espacio restante a la derecha de la imagen */
+ margin-bottom: 10px;
+}
+.blog_texto {
+  text-align: left; /* Puedes cambiarlo si lo necesitas */
+  font-family: "Spartan",sans-serif;
+  color: #7C5152;
+  font-weight: 100;
+  font-size: 2em;
+  flex: 1; /* El texto ocupará el espacio restante a la derecha de la imagen */
+ 
+}
+.texto{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 480px) {
+  .contenedorInicio {
+     width: 100%;
+     margin-left: 0px;
+     margin-right: 0px;
+     padding-left:0px;
+     padding-right:0px;
+  }
+  .conteiner{
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left:0px;
+    padding-right:0px;
+  }
+  .blog_foto {
+    max-width: 100%; /* Ocupa el ancho completo en dispositivos móviles */
+  }
+  .blog{
+    margin: 0 auto; /* Centra el contenedor en la pantalla */
+    flex-direction: column; /* Cambia la dirección de la distribución en dispositivos móviles */
+  
+  }
+  .blog_texto{
+    font-size: 1.5em;
+  }
+  .blog_texto_titulo {
+    font-size: 2em;
+  }
+
+}

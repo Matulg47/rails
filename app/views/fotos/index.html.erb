@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Fotos</h1>
+
+<div id="fotos">
+  <% @fotos.each do |foto| %>
+    
+    <%= image_tag foto.image %>
+    <%= foto.titulo %>
+    <%= foto.nombre %>
+    <%= button_to "Destroy this foto", foto, method: :delete %>
+    
+
+
+  <% end %>
+</div>
+<% if !@fotos.find_by(nombre:"blog") %>
+  <%= link_to "Agregar foto del blog", new_foto_path %>
+<% end %>
+<% if @fotos.where(nombre:"deslizante").count<3 %>
+  <%= link_to "Agregar foto deslizante", newFotoD_path %>
+<% end %>

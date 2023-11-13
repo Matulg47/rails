@@ -12,6 +12,8 @@ class PedidosController < ApplicationController
         @tortas=@pedido.cakes
         @tartas=@pedido.tarts
         @desayunos=@pedido.desayunos
+        @macaroons=@pedido.macaroons
+        @otros=@pedido.otros
     end
 
     def new 
@@ -20,7 +22,7 @@ class PedidosController < ApplicationController
         if params[:pedido_id].present?
             
             if params[:pedido_id]=='-1'
-                puts 'PEDIDO NUEVOOOO'
+               
                 @pedido=Pedido.new
             else
                 if(params[:pedido_id])
@@ -78,20 +80,20 @@ class PedidosController < ApplicationController
             #     @pedido.fecha_de_entrega+=1
             #     @pedido.save
             # else
+        
                 if params[:mas_tortas] 
+                    
                     redirect_to new_cake_path(pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
-                end
-                if params[:tort]
                     
                 end
                 if params[:mas_tartas] 
-                    redirect_to new_tart_path(nombre: @pedido.a_nombre_de, pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
+                    redirect_to new_tart_path( pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
                 end
                 if params[:mas_desa]
-                    redirect_to new_desayuno_path(nombre: @pedido.a_nombre_de, pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
+                    redirect_to new_desayuno_path(pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
                 end
-                if params[:mas_maca] 
-                    redirect_to new_macaroon_path(nombre: @pedido.a_nombre_de, pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
+                if params[:mas_mac] 
+                    redirect_to new_macaroon_path(pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
                 end
                 if params[:mas_otros] 
                     redirect_to new_otro_path(nombre: @pedido.a_nombre_de, pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
@@ -114,7 +116,26 @@ class PedidosController < ApplicationController
     end
     def update
         #modificar los datos de un pedido en la BD
-        put 'HOLAAAAAAAAAAAAAAAAAAAA'
+        
+        @pedido=Pedido.find(params[:id])
+        
+        if params[:mas_tortas] 
+            
+            redirect_to new_cake_path(pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
+            
+        end
+        if params[:mas_tartas] 
+            redirect_to new_tart_path( pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
+        end
+        if params[:mas_desa]
+            redirect_to new_desayuno_path(nombre: @pedido.a_nombre_de, pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
+        end
+        if params[:mas_mac] 
+            redirect_to new_macaroon_path(pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
+        end
+        if params[:mas_otros] 
+            redirect_to new_otro_path(nombre: @pedido.a_nombre_de, pedido_id: @pedido.id), notice: "Se guardo el pedido correctamentee"
+        end
     end
     def destroy
         #eliminar un pedido?

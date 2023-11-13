@@ -1,0 +1,33 @@
+<h1>Editing precio</h1>
+<%= form_for @precio,  method: :patch do |f| %>
+  <div class="field">
+  <%= f.label :nombre %>
+  <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :'precio individual' %>
+    <%= f.number_field :precioC %>
+  </div>
+  <div class="field">
+    <%= f.label :precioM %>
+    <%= f.number_field :precioM %>
+  </div>
+  <div class="field">
+    <%= f.label :precioG %>
+    <%= f.number_field :precioG %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Actualizar Precio' %>
+    </div>
+    <% end %>
+<%= @precio.precioC %>
+<%= @precio.precioM %>
+<%= @precio.precioG %>
+<br>
+
+<div>
+  <%= link_to "Show this precio", @precio %> |
+  <%= link_to "Back to precios", precios_path %>
+</div>

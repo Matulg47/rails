@@ -1,10 +1,12 @@
 <div id="<%= dom_id pedido %>">
+<%= form_for @pedido, url:pedidos_path do |f| %>
   <p>
     <h1>Resumen del Pedido</h1>
     <p>Detalles del pedido:</p>
       <ul>
-        <li>Cliente: <%= @pedido.a_nombre_de %></li>
-        <li>Fecha: <%= @pedido.fecha_de_entrega %></li>
+        <li>Cliente:  
+        <%= f.text_field :a_nombre_de %><%= @pedido.a_nombre_de %></li>
+        <li>Fecha: <%= f.date_field :fecha_de_entrega %><%= @pedido.fecha_de_entrega %></li>
         <!-- Otros detalles del pedido -->
       </ul>
   
@@ -12,7 +14,16 @@
       <ul>
         <% @tortas.each do |torta| %>
           <li>
-            <%= torta.nombre %> - Unidades:<%=torta.cantidad %> - Tamaño:<%= torta.tamaño %> - <%= number_to_currency(torta.precio) %>
+          <%if torta.tamaño == "Chica" %> 
+          <% @p='precioC' %>
+          <%end%> 
+          <%if torta.tamaño == "Mediano" %> 
+          <% @p='precioM' %>
+          <%end%>
+          <%if torta.tamaño == "Grande" %> 
+          <% @p='precioG' %>
+          <%end%>
+            <%= torta.nombre %> - Unidades:<%=torta.cantidad %> - Tamaño:<%= torta.tamaño %> - Precio:<%= Precio.find_by(nombre:torta.nombre).send(@p) * torta.cantidad%>
           </li>
         <% end %>
       </ul>
@@ -22,6 +33,42 @@
         <% @tartas.each do |tarta| %>
           <li>
             <%= tarta.nombre %> - Unidades:<%=tarta.cantidad %> - Tamaño:<%= tarta.tamaño %> - <%= number_to_currency(tarta.precio) %>
+          </li>
+        <% end %>
+      </ul>
+      <h2>Cookies en el pedido:</h2>
+      <ul>
+        <% @macaroons.each do |mac| %>
+          <li>
+          <%if mac.tamaño == "Chica" %> 
+          <% @p='precioC' %>
+          <%end%> 
+          <%if mac.tamaño == "Mediano" %> 
+          <% @p='precioM' %>
+          <%end%>
+          <%if mac.tamaño == "Grande" %> 
+          <% @p='precioG' %>
+          <%end%>
+          <%if mac.nombre == "Chipá" %> 
+          <% @p='precioC' %>
+          <%end%>
+          
+            <%= mac.nombre %> - Unidades:<%=mac.cantidad %> - Tamaño:<%= mac.tamaño %> - Precio:<%= Precio.find_by(nombre:mac.nombre).send(@p) * mac.cantidad%>
+          </li>
+        <% end %>
+      </ul>
+      <h2>Budines, brownies y Streusels en el pedido:</h2>
+      <ul>
+        <% @otros.each do |o| %>
+          <li>
+          <%if o.tamaño == "Chica" %> 
+          <% @p='precioC' %>
+          <%end%> 
+          <%if o.tamaño == "Grande" %> 
+          <% @p='precioG' %>
+          <%end%>
+          
+            <%= o.nombre %> - Unidades:<%=o.cantidad %> - Tamaño:<%= o.tamaño %> - Precio:<%= Precio.find_by(nombre:o.nombre).send(@p) * o.cantidad%>
           </li>
         <% end %>
       </ul>
@@ -58,3 +105,4 @@ Por favor, avísame si necesitas más información o si hay algún problema con 
 [Tu Número de Contacto]"%>
 <a href="<%= 'https://wa.me/2216203959?text=' + URI.encode_www_form_component(@consulta_texto) %>" class="boton">Enviar pedido</a>
 </div>
+<% end %>

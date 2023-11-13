@@ -1,3 +1,44 @@
+<script>
+function mostrarTablaCantidad(tipo) {
+    var tablaCantidad = document.getElementById('tablaCantidad ' + tipo);
+    var descripElements = document.getElementsByClassName('descripcion ' + tipo);
+    var descrip = descripElements[0]; // Esto seleccionará el primer elemento con esa clase
+    var imagen = document.querySelector('.imagen.' + tipo); // Selecciona el div con la clase "imagen" y la clase específica "tipo"
+   
+    if (tablaCantidad.style.display === 'none' || tablaCantidad.style.display === '') {
+        imagen.classList.remove('agrandar')
+        imagen.classList.add('encoger'); // Agrega la clase para encoger la imagen
+     
+    setTimeout(function () {
+      tablaCantidad.style.display = 'table'; // Muestra la tabla
+      setTimeout(function () {
+        tablaCantidad.style.opacity = '1';
+    }, 100); // Pequeño retraso para permitir la animación
+      tablaCantidad.style.transform = 'translateY(5px)'; // Desplazamiento hacia abajo
+      descrip.classList.add('mostrar'); // Agrega la clase para mostrar la descripción
+    }, 100); // Espera 0.5 segundos para mostrar la tabla después de encoger la imagen
+  } else {
+    tablaCantidad.style.opacity = '0'; // Hace que la tabla sea transparente
+    tablaCantidad.style.transform = 'translateY(-20px)'; // Desplazamiento hacia arriba
+    descrip.classList.remove('mostrar'); // Remueve la clase para ocultar la descripción
+    setTimeout(function () {
+      tablaCantidad.style.display = 'none'; // Oculta la tabla después de la transición
+    }, 300); // Espera hasta que termine la transición (0.3 segundos)
+
+    setTimeout(function () {
+      imagen.classList.add('agrandar'); 
+      imagen.classList.remove('encoger')// Remueve la clase para encoger la imagen
+      imagen.style.opacity = '1'; // Hace que la imagen sea visible nuevamente
+    }, 200); // Espera 0.6 segundos para mostrar la imagen nuevamente
+  }
+}
+</script>
+
+
+
+
+
+
 <head>
 <link rel "stylesheet" href="estilos3.css">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0 , minimum-scale=1.0">
@@ -6,375 +47,480 @@
     <h1> <%= params[:nombre] %> sigamos con tu pedido de tartas </h1>
     <div class="contenedor">  
         <div class="lista">
-            <h2>Lemon Pie</h2>   
-            <figure>
-                <%= image_tag "lemonpie.jpeg", title: "Lemon Pie", class: "lemonPie", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>     
-                    <figcaption> Descripcion a agregar
-                    </figcaption> 
-            </figure>  
-            <table>
-                <tr>
-                    <th>Opciones</th>
-                    <th></th>
-                    <th>Cantidad</th>
-                </tr>
-                <tr>
-                    <td><label>
-                        Mediana(14cm de diámetro, 2 porciones)
-                        </label>  
-                    </td>
-                    <td></td>
-                    <td> <label class="prueba">
-                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadLPM'  %>
-                    </label>   
-                    </td>
-                </tr>
-                <tr>
-                    <td><label>
-                        XL(20cm de diámetro, 8 porciones)
-                        </label>  
-                    </td>
-                    <td></td>
-                    <td> <label class="prueba">
-                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadLPG'  %>
-                        </label>   
-                    </td>
-                </tr>
-            </table>
-        </div>
-   
-
-        <div>
+            <div class="contenido">
+                <div class="imagen LP">
+                    <figure>
+                        <%= image_tag "lemonpie.jpeg", title: "Lemon Pie", class: "lemonPie", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>     
+                        <figcaption> Descripcion a agregar
+                        </figcaption> 
+                    </figure>  
+                </div>
+                <div class="descripcion LP">
+                    <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                    Lemon Pie </h1>
+                    <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                    Algun texto descriptivo si queres poner aca... </p>
+                    <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('LP')" type="button" style="margin-left: 50px;">Llevar!</button>
+                    <table id="tablaCantidad LP" class="tablaCantidad" style="margin-left: 25px;">
+                        <tr>
+                            <th>Opciones</th>
+                            <th></th>
+                            <th>Cantidad</th>
+                        </tr>
+                        <tr>
+                            <td><label>
+                                Mediana(14cm de diámetro, 2 porciones)
+                                </label>  
+                            </td>
+                            <td></td>
+                            <td> <label class="prueba">
+                                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadLPM'  %>
+                                    <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Lemon Pie").precioM%> c/u</h1>  
+                                </label>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>
+                                XL(20cm de diámetro, 8 porciones)
+                                </label>  
+                            </td>
+                            <td></td>
+                            <td> <label class="prueba">
+                                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadLPG'  %>
+                                    <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Lemon Pie").precioG%> c/u</h1>  
+                                </label>   
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div>
         </div>
 
 
         <div class="lista">
-            <h2>Tarta Tofi</h2 >
+            <div class="contenido_inv">
+                <div class="imagen TT">
+                    <figure>
+                        <%= image_tag "tartaTofi.jpeg", title: "Tarta Tofi", class: "tartaTofi", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                        <figcaption>  Descripcion a agregar
+                        </figcaption> 
+                    </figure>  
+                </div>
+                <div class="descripcion TT">
+                    <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                    Tarta Tofi </h1>
+                    <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                    Algun texto descriptivo si queres poner aca... </p>
+                    <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('TT')" type="button">Llevar!</button>
+                    <table id="tablaCantidad TT" class="tablaCantidad" style="margin-left: 50px;">                   
+                        <tr>
+                            <th>Opciones</th>
+                            <th></th>
+                            <th>Cantidad</th>
+                        </tr>
+
+                        <tr>
+                            <td><label>
+                            Mediana(14cm de diámetro, 2 porciones)
+                            </label>  
+                            </td>
+                            <td></td>
+                            <td> <label class="prueba">
+                                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTTM'  %>
+                                    <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Tarta Tofi").precioM%> c/u</h1>  
+                                </label>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>
+                                XL(20cm de diámetro, 8 porciones)
+                                </label>  
+                            </td>
+                            <td></td>
+                            <td> <label class="prueba">
+                                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTTG'  %>
+                                    <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Tarta Tofi").precioG%> c/u</h1> 
+                                </label>   
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
     
-            <figure>
-                <%= image_tag "tartaTofi.jpeg", title: "Tarta Tofi", class: "tartaTofi", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-                <figcaption> Descripcion a agregar
-                </figcaption> 
-            </figure>  
- 
-            <table>
-                <tr>
-                    <th>Opciones</th>
-                    <th></th>
-                    <th>Cantidad</th>
-                </tr>
-               
-                <tr>
-                    <td><label>
-                    Mediana(14cm de diámetro, 2 porciones)
-                    </label>  
-                    </td>
-                    <td></td>
-                    <td> <label class="prueba">
-                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTTM'  %>
-                    </label>   
-                    </td>
-                </tr>
-                <tr>
-                    <td><label>
-                        XL(20cm de diámetro, 8 porciones)
-                        </label>  
-                    </td>
-                    <td></td>
-                    <td> <label class="prueba">
-                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTTG'  %>
-                    </label>   
-                    </td>
-                </tr>
-            </table>
+            
+   
+    
+    
+    
+        <div class="lista">
+            <div class="contenido">
+                <div class="imagen CM">
+                    <figure>
+                        <%= image_tag "crumbleManzana.jpeg", title: "Crumble de Manzana", class: "crumbleM", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                        <figcaption> Brownie + dulde de leche + crema oreo + merengue italiano
+                        </figcaption> 
+                    </figure>  
+                </div>
+                <div class="descripcion CM">
+                    <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                    Crumble de Manzana </h1>
+                    <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                    Algun texto descriptivo si queres poner aca... </p>
+                    <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('CM')" type="button" style="margin-left: 50px;">Llevar!</button>
+                    <table id="tablaCantidad CM" class="tablaCantidad" style="margin-left: 40px;">
+                        <tr>
+                            <th>Opciones</th>
+                            <th></th>
+                            <th>Cantidad</th>
+                        </tr>
+
+                        <tr>
+                            <td><label>
+                            Mediana(14cm de diámetro, 2 porciones)
+                            </label>  
+                            </td>
+                            <td></td>
+                            <td> <label class="prueba">
+                                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCMM'  %>
+                                    <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Crumble de Manzana").precioM%> c/u</h1> 
+                                </label>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>
+                                XL(20cm de diámetro, 8 porciones)
+                                </label>  
+                            </td>
+                            <td></td>
+                            <td> <label class="prueba">
+                                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCMG'  %>
+                                    <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Crumble de Manzana").precioG%> c/u</h1> 
+                                </label>   
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     
-            
-   
-    <div class="lista">
-        <h2>Crumble de Manzana</h2 >
-    
-        <figure>
-            <%= image_tag "crumbleManzana.jpeg", title: "Crumble de Manzana", class: "crumbleM", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-            <figcaption> Descripciòn a agregar
-            </figcaption> 
-        </figure>  
-     
-
-        <table>
-            <tr>
-                <th>Opciones</th>
-                <th></th>
-                <th>Cantidad</th>
-            </tr>
-           
-            <tr>
-                <td><label>
-                Mediana(14cm de diámetro, 2 porciones)
-                </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCMM'  %>
-                </label>   
-                </td>
-            </tr>
-            <tr>
-                <td><label>
-                    XL(20cm de diámetro, 8 porciones)
-                    </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCMG'  %>
-                </label>   
-                </td>
-            </tr>
-        </table>
-    </div>
-    
 
     <div class="lista">
-        <h2>Tarta de Coco</h2 >
-    
-        <figure>
-            <%= image_tag "tartaCoco.jpeg", title: "Tarta Coco", class: "tartaC", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-            <figcaption> Descripcion
-            </figcaption> 
-        </figure>  
-    
-        <table>
-            <tr>
-                <th>Opciones</th>
-                <th></th>
-                <th>Cantidad</th>
-            </tr>
-            <tr>
-                <td><label>
-                Mediana(14cm de diámetro, 2 porciones)
-                </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTCM'  %>
-                </label>   
-                </td>
-            </tr>
-            <tr>
-                <td><label>
-                    XL(20cm de diámetro, 8 porciones)
-                    </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTCG'  %>
-                </label>   
-                </td>
-            </tr>
-        </table>
+        <div class="contenido_inv">
+            <div class="imagen TC">
+              <figure>
+                  <%= image_tag "tartaCoco.jpeg", title: "Tarta Coco", class: "tartaC", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                  <figcaption> Descripcion
+                  </figcaption> 
+              </figure>  
+            </div>
+            <div class="descripcion TC">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Tarta de Coco </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('TC')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad TC" class="tablaCantidad" style="margin-left: 50px;">
+
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+                    <tr>
+                        <td><label>
+                        Mediana(14cm de diámetro, 2 porciones)
+                        </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTCM'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Tarta de Coco").precioM%> c/u</h1> 
+                            </label>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>
+                            XL(20cm de diámetro, 8 porciones)
+                            </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTCG'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Tarta de Coco").precioM%> c/u</h1> 
+                            </label>   
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
    
     
 
 
     <div class="lista">
-        <h2>Tarta Tofi con Oreos</h2 >
-    
-        <figure>
-            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaTO", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-            <figcaption> Descripcion
-            </figcaption> 
-        </figure>  
-    
-        <table>
-     
-            <tr>
-                <th>Opciones</th>
-                <th></th>
-                <th>Cantidad</th>
-            </tr>
-            
-            <tr>
-                <td><label>
-                Mediana(14cm de diámetro, 2 porciones)
-                </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTOM'  %>
-                </label>   
-                </td>
-            </tr>
-            <tr>
-                <td><label>
-                    XL(20cm de diámetro, 8 porciones)
-                    </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTOG'  %>
-                </label>   
-                </td>
-            </tr>
-        </table>
-    </div> 
-    <div class="lista">
-        <h2>Tarta de Ricota</h2 >
-    
-        <figure>
-            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaR", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-            <figcaption> Descripcion
-            </figcaption> 
-        </figure>  
-    
-        <table>
-     
-            <tr>
-                <th>Opciones</th>
-                <th></th>
-                <th>Cantidad</th>
-            </tr>
-            
-            <tr>
-                <td><label>
-                Mediana(14cm de diámetro, 2 porciones)
-                </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadRM'  %>
-                </label>   
-                </td>
-            </tr>
-            <tr>
-                <td><label>
-                    XL(20cm de diámetro, 8 porciones)
-                    </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadRG'  %>
-                </label>   
-                </td>
-            </tr>
-        </table>
+        <div class="contenido">
+            <div class="imagen TTO">
+              <figure>
+                  <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaTO", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                  <figcaption> Descripcion
+                  </figcaption> 
+              </figure>  
+            </div>
+            <div class="descripcion TTO">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Tarta Tofi con Oreos </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('TTO')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad TTO" class="tablaCantidad" style="margin-left: 40px;">
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+
+                    <tr>
+                        <td><label>
+                        Mediana(14cm de diámetro, 2 porciones)
+                        </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTOM'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Tarta Tofi con Oreos").precioM%> c/u</h1> 
+                        </label>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>
+                            XL(20cm de diámetro, 8 porciones)
+                            </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTOG'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Tarta Tofi con Oreos").precioG%> c/u</h1> 
+                            </label>   
+                        </td>
+                    </tr>
+                </table>
+            </div> 
+        </div> 
     </div> 
 
-
+    
     <div class="lista">
-        <h2>Tarta de Ricota y Frambuesas</h2 >
-    
-        <figure>
-            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-            <figcaption> Descripcion
-            </figcaption> 
-        </figure>  
-    
-        <table>
-     
-            <tr>
-                <th>Opciones</th>
-                <th></th>
-                <th>Cantidad</th>
-            </tr>
-            
-            <tr>
-                <td><label>
-                Mediana(14cm de diámetro, 2 porciones)
-                </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTRFM'  %>
-                    </label>   
-                </td>
-            </tr>
-            <tr>
-                <td><label>
-                    XL(20cm de diámetro, 8 porciones)
-                    </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTRFG'  %>
-                </label>   
-                </td>
-            </tr>
-        </table>
+        <div class="contenido_inv">
+            <div class="imagen TR"> 
+                <figure>
+                    <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaR", style: "width: 382.8px; height: 289.6px;"%>
+                    <figcaption> Descripcion
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion TR">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Tarta de Ricota </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('TR')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad TR" class="tablaCantidad" style="margin-left: 40px;">
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+
+                    <tr>
+                        <td><label>
+                        Mediana(14cm de diámetro, 2 porciones)
+                        </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadRM'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Tarta de Ricota").precioM%> c/u</h1> 
+                            </label>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>
+                            XL(20cm de diámetro, 8 porciones)
+                            </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadRG'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Tarta de Ricota").precioG%> c/u</h1> 
+                            </label>   
+                        </td>
+                    </tr>
+                </table>
+            </div> 
+        </div> 
     </div> 
 
 
     <div class="lista">
-        <h2>Pasta Frolla de Membrillo o Batata</h2 >
-    
-        <figure>
-            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-            <figcaption> Descripcion
-            </figcaption> 
-        </figure>  
-    
-        <table>
-     
-            <tr>
-                <th>Opciones</th>
-                <th></th>
-                <th>Cantidad</th>
-            </tr>
-           
-            <tr>
-                <td><label>
-                Mediana(10cm de diámetro, 2 porciones)
-                </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadPFM'  %>
-                    </label>   
-                </td>
-            </tr>
-            <tr>
-                <td><label>
-                    XL(20cm de diámetro, 8 porciones)
-                    </label>  
-                </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadPFG'  %>
-                </label>   
-                </td>
-            </tr>
-        </table>
+        <div class="contenido">
+            <div class="imagen TRF">   
+                <figure>
+                    <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px;"%>
+                    <figcaption> Descripcion
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion TRF">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Tarta de Ricota y Frambuesas </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('TRF')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad TRF" class="tablaCantidad" style="margin-left: 40px;">
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+
+                    <tr>
+                        <td><label>
+                        Mediana(14cm de diámetro, 2 porciones)
+                        </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTRFM'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Tarta de Ricota y Frambuesas").precioM%> c/u</h1> 
+                            </label>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>
+                            XL(20cm de diámetro, 8 porciones)
+                            </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTRFG'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Tarta de Ricota y Frambuesas").precioG%> c/u</h1> 
+                            </label>   
+                        </td>
+                    </tr>
+                </table>
+            </div> 
+        </div> 
     </div> 
 
 
     <div class="lista">
-        <h2>Tarta de Maracuyá y Frambuesa</h2 >
-    
-        <figure>
-            <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
-            <figcaption> Descripcion
-            </figcaption> 
-        </figure>  
-    
-        <table>
-     
-            <tr>
-                <th>Opciones</th>
-                <th></th>
-                <th>Cantidad</th>
-            </tr>
-            <tr>
-                <td> <label class="texto" > 
-                20cm de diámetro (8 porciones)
-                </label> </td>
-                <td></td>
-                <td> <label class="prueba">
-                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTMF'  %>
-                    </label>
-                </td>
-            </tr>
-           
-        </table>
+        <div class="contenido_inv">
+            <div class="imagen PF">
+                <figure>
+                    <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+                    <figcaption> Descripcion
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion PF">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Pasta Frolla de Membrillo o Batata </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('PF')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad PF" class="tablaCantidad" style="margin-left: 50px;">
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+
+                    <tr>
+                        <td><label>
+                        Mediana(10cm de diámetro, 2 porciones)
+                        </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                            <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadPFM'  %>
+                            <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                            $<%= Precio.find_by(nombre:"Pasta Frolla de Membrillo o Batata").precioM%> c/u</h1>
+                            </label>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>
+                            XL(20cm de diámetro, 8 porciones)
+                            </label>  
+                        </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadPFG'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Pasta Frolla de Membrillo o Batata").precioG%> c/u</h1>
+                                </label>   
+                        </td>
+                    </tr>
+                </table>
+            </div> 
+        </div> 
+    </div> 
+
+
+    <div class="lista">
+        <div class="contenido">
+            <div class="imagen TMF">
+                <figure>
+                    <%= image_tag "tartaFrutilla.jpeg", title: "Tarta de Frutilla", class: "tartaF", style: "width: 382.8px; height: 289.6px; margin-right: 1em;"%>
+                    <figcaption> Descripcion
+                    </figcaption> 
+                </figure>  
+            </div> 
+            <div class="descripcion TMF">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Tarta de Maracuyá y Frambuesa </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('TMF')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad TMF" class="tablaCantidad" style="margin-left: 40px;">     
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+                    <tr>
+                        <td> <label class="texto" > 
+                        20cm de diámetro (8 porciones)
+                        </label> </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadTMF'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Tarta de Maracuyá y Frambuesa").precioG%> c/u</h1> 
+                                </label>
+                        </td>
+                    </tr>
+                </table>
+            </div> 
+        </div> 
     </div> 
 
 

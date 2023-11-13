@@ -1,0 +1,18 @@
+<% if @error_message.present? %>
+  <div class="alert alert-danger">
+    <%= @error_message %>
+  </div>
+<% end %>
+<%= form_tag identificando_path, method: :post do %>
+    <!-- Agrega los campos del formulario -->
+    <label for="nombre">Nombre:</label>
+    <%= text_field_tag :nombre %>
+  
+    <label for="contraseña">Contraseña:</label>
+    <input type="password" id="contrasena" name="contrasena">
+  
+    <!-- Agrega otros campos según tus necesidades -->
+  
+    <!-- Botón de envío -->
+    <%= submit_tag "Enviar" %>
+  <% end %>

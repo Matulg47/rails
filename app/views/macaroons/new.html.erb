@@ -1,9 +1,411 @@
-<h1>New macaroon</h1>
+<script>
+function mostrarTablaCantidad(tipo) {
+    var tablaCantidad = document.getElementById('tablaCantidad ' + tipo);
+    var descripElements = document.getElementsByClassName('descripcion ' + tipo);
+    var descrip = descripElements[0]; // Esto seleccionará el primer elemento con esa clase
+    var imagen = document.querySelector('.imagen.' + tipo); // Selecciona el div con la clase "imagen" y la clase específica "tipo"
+   
+    if (tablaCantidad.style.display === 'none' || tablaCantidad.style.display === '') {
+        imagen.classList.remove('agrandar')
+        imagen.classList.add('encoger'); // Agrega la clase para encoger la imagen
+     
+    setTimeout(function () {
+      tablaCantidad.style.display = 'table'; // Muestra la tabla
+      setTimeout(function () {
+        tablaCantidad.style.opacity = '1';
+    }, 100); // Pequeño retraso para permitir la animación
+      tablaCantidad.style.transform = 'translateY(5px)'; // Desplazamiento hacia abajo
+      descrip.classList.add('mostrar'); // Agrega la clase para mostrar la descripción
+    }, 100); // Espera 0.5 segundos para mostrar la tabla después de encoger la imagen
+  } else {
+    tablaCantidad.style.opacity = '0'; // Hace que la tabla sea transparente
+    tablaCantidad.style.transform = 'translateY(-20px)'; // Desplazamiento hacia arriba
+    descrip.classList.remove('mostrar'); // Remueve la clase para ocultar la descripción
+    setTimeout(function () {
+      tablaCantidad.style.display = 'none'; // Oculta la tabla después de la transición
+    }, 300); // Espera hasta que termine la transición (0.3 segundos)
 
-<%= render "form", macaroon: @macaroon %>
+    setTimeout(function () {
+      imagen.classList.add('agrandar'); 
+      imagen.classList.remove('encoger')// Remueve la clase para encoger la imagen
+      imagen.style.opacity = '1'; // Hace que la imagen sea visible nuevamente
+    }, 200); // Espera 0.6 segundos para mostrar la imagen nuevamente
+  }
+}
+</script>
 
-<br>
 
-<div>
-  <%= link_to "Back to macaroons", macaroons_path %>
+
+
+
+
+<head>
+    <link rel "stylesheet" href="estilos3.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0 , minimum-scale=1.0">
+</head>
+<%= form_for @macaroon, url:macaroons_path do |f| %>
+    <h1> <%= params[:nombre] %> sigamos con tu pedido de tortas </h1>
+<div class="contenedor">  
+    <div class="lista">
+        <div class="contenido">
+            <div class="imagen CVCC">
+                <figure>
+                    <%= image_tag "cookiesVCC.jpeg", title: "Cookies de vainilla y chips de chocolate ", class: "cookie", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>     
+                    <figcaption> Descripcion
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion CVCC">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Cookies de vainilla y chips de chocolate </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('CVCC')" type="button"  style="margin-left: 50px;">Llevar!</button>
+                    <table id="tablaCantidad CVCC" class="tablaCantidad"  style="margin-left: 40px;">
+                        <tr>
+                            <th>Opciones</th>
+                            <th></th>
+                            <th>Cantidad</th>
+                        </tr>
+                        <tr>
+                            <td> <label class="texto" > 
+                                3 Unidades
+                            </label> </td>
+                            <td></td>
+                            <td> <label class="prueba">
+                                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCVCC'  %>
+                                    <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Cookies de Vainilla y Chips de Chocolate").precioC%> c/u</h1>     
+                                    
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>
+                            10 Unidades
+                                </label>  
+                            </td>
+                            <td></td>
+                            <td> <label class="prueba">
+                                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCVCCM'  %>
+                                    <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Cookies de Vainilla y Chips de Chocolate").precioM%> c/u</h1>     
+                                </label>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>
+                            20 Unidades
+                                </label>  
+                            </td>
+                            <td></td>
+                            <td> <label class="prueba">
+                                    <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCVCCG'  %>
+                                    <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                    $<%= Precio.find_by(nombre:"Cookies de Vainilla y Chips de Chocolate").precioG%> c/u</h1>     
+                                </label>   
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        <div>
+    </div>
+
+
+    <div class="lista">
+        <div class="contenido_inv">
+            <div class="imagen CLA">
+                <figure>
+                    <%= image_tag "marquiseO.jpg", title: "Cookies de Limón y Almendras", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                    <figcaption> Descripcion
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion CLA">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Cookies de limón y Almendras </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('CLA')" type="button">Llevar!</button>
+                <table id="tablaCantidad CLA" class="tablaCantidad" style="margin-left: 50px;">
+                  <tr>
+                    <th>Opciones</th>
+                    <th></th>
+                    <th>Cantidad</th>
+                  </tr>
+                  <tr>
+                    <td> <label class="texto" > 
+                          3 Unidades
+                    </label> </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCLA'  %>
+                        <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                        $<%= Precio.find_by(nombre:"Cookies de Limón y Almendras").precioC%> c/u</h1>     
+                        </label>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td><label>
+                      10 Unidades
+                          </label>  
+                      </td>
+                      <td></td>
+                      <td> <label class="prueba">
+                              <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCLAM'  %>
+                              <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                              $<%= Precio.find_by(nombre:"Cookies de Limón y Almendras").precioM%> c/u</h1>     
+                          </label>   
+                      </td>
+                  </tr>
+                  <tr>
+                      <td><label>
+                      20 Unidades
+                          </label>  
+                      </td>
+                      <td></td>
+                      <td> <label class="prueba">
+                              <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCLAG'  %>
+                              <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                              $<%= Precio.find_by(nombre:"Cookies de Limón y Almendras").precioG%> c/u</h1>     
+                          </label>   
+                      </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+        
+   
+    <div class="lista">
+        <div class="contenido">
+            <div class="imagen CCCCB">
+                <figure>
+                    <%= image_tag "marquisePL.png", title: "Cookies de chocolate y chips de chocolate blanco", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                    <figcaption> Descripcion
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion CCCCB">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Cookies de Chocolate y Chips de Chocolate Blanco</h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('CCCCB')" type="button"  style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad CCCCB" class="tablaCantidad"  style="margin-left: 40px;">
+                    <tr>
+                    <th>Opciones</th>
+                    <th></th>
+                    <th>Cantidad</th>
+                  </tr>
+                  <tr>
+                    <td> <label class="texto" > 
+                          3 Unidades
+                    </label> </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCCCCB'  %>
+                        <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                        $<%= Precio.find_by(nombre:"Cookies de Chocolate y Chips de Chocolate Blanco").precioC%> c/u</h1>     
+                        </label>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td><label>
+                      10 Unidades
+                          </label>  
+                      </td>
+                      <td></td>
+                      <td> <label class="prueba">
+                              <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCCCCBM'  %>
+                              <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                              $<%= Precio.find_by(nombre:"Cookies de Chocolate y Chips de Chocolate Blanco").precioM%> c/u</h1>     
+                          </label>   
+                      </td>
+                  </tr>
+                  <tr>
+                      <td><label>
+                      20 Unidades
+                          </label>  
+                      </td>
+                      <td></td>
+                      <td> <label class="prueba">
+                              <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadCCCCBG'  %>
+                              <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                              $<%= Precio.find_by(nombre:"Cookies de Chocolate y Chips de Chocolate Blanco").precioG%> c/u</h1>     
+                          </label>   
+                      </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <div class="lista">
+        <div class="contenido_inv">
+            <div class="imagen AM">
+              <figure>
+                  <%= image_tag "cheesecakeFR.jpg", title: "Alfajor de Maicena", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                  <figcaption> falta ingredientes
+                  </figcaption> 
+              </figure>  
+            </div>
+            <div class="descripcion AM">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Alfajor de Maicena </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('AM')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad AM" class="tablaCantidad" style="margin-left: 40px;">
+                  <tr>
+                    <th>Opciones</th>
+                    <th></th>
+                    <th>Cantidad</th>
+                  </tr>
+                  <tr>
+                    <td> <label class="texto" > 
+                          3 Unidades
+                    </label> </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadAM'  %>
+                        <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                        $<%= Precio.find_by(nombre:"Alfajor de Maicena").precioC%> c/u</h1>     
+                        </label>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td><label>
+                      12 Unidades
+                          </label>  
+                      </td>
+                      <td></td>
+                      <td> <label class="prueba">
+                              <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadAMG'  %>
+                              <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                              $<%= Precio.find_by(nombre:"Alfajor de Maicena").precioG%> c/u</h1>     
+                          </label>   
+                      </td>
+                  </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="lista">
+        <div class="contenido">
+            <div class="imagen M">
+              <figure>
+                  <%= image_tag "marquiseClasica.jpeg", title: "Macaron", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                  <figcaption> Descripcion
+                  </figcaption> 
+              </figure>  
+            </div>
+            <div class="descripcion MC">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Macaron </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Nuestros distintos sabores: Chcolate Semi Amargo - Chocolate Blanco - Chocolate Semi Amargo y Frutos Rojos - Frutos Rojos - Maracuyá - Limón - Oreo - Nutella y Chocolate </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('M')" type="button"  style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad M" class="tablaCantidad"  style="margin-left: 40px;">
+                  <tr>
+                    <th>Opciones</th>
+                    <th></th>
+                    <th>Cantidad</th>
+                  </tr>
+                  <tr>
+                    <td> <label class="texto" > 
+                          2 Unidades (1 sabor)
+                    </label> </td>
+                    <td></td>
+                    <td> <label class="prueba">
+                        <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadM'  %>
+                        <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                        $<%= Precio.find_by(nombre:"Macaron").precioC%> c/u</h1>     
+                        </label>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td><label>
+                      6 Unidades (2 sabores)
+                          </label>  
+                      </td>
+                      <td></td>
+                      <td> <label class="prueba">
+                              <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadMM'  %>
+                              <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                              $<%= Precio.find_by(nombre:"Macaron").precioM%> c/u</h1>     
+                          </label>   
+                      </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+   
+   
+    <div class="lista">
+        <div class="contenido_inv">
+            <div class="imagen C">
+                <figure>
+                    <%= image_tag "marquiseFerrero.jpeg", title: "Chipá", class: "torta", style: "padding-top:15px;width: 382.8px; height: 289.6px;"%>
+                    <figcaption> Brownie + Dulce de Leche + Nutella + Crema + Ferreros
+                    </figcaption> 
+                </figure>  
+            </div>
+            <div class="descripcion C">
+                <h1 style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 15px; font-weight: 400; font-size: 36px;"> 
+                Chipá </h1>
+                <p id="texto-decriptivo" style="text-align: center; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; padding-top: 10px; font-weight: 400; font-size: 16px;"> 
+                Algun texto descriptivo si queres poner aca... </p>
+                <button class="botonT" name='menudespl' onclick="mostrarTablaCantidad('C')" type="button" style="margin-left: 50px;">Llevar!</button>
+                <table id="tablaCantidad C" class="tablaCantidad" style="margin-left: 50px;">
+                    <tr>
+                        <th>Opciones</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                    </tr>
+                    <tr>
+                        <td> <label class="texto" > 
+                        Chipá x 250g
+                        </label> </td>
+                        <td></td>
+                        <td> <label class="prueba">
+                                <%= select_tag "tamaño", options_for_select(@opciones), prompt: '0', class: 'cantidad', name: 'cantidadC'  %>
+                                <h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
+                                $<%= Precio.find_by(nombre:"Chipá").precioC%> c/u</h1> 
+                            </label>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+   
+
+   
+
+
+    
+    
+   
+
+   
+    
+    <div class="lista">
+<input type="text" name="pedido_id"  value= <%= params[:pedido_id] %> />
+
+
+<%= f.submit "Continuar", name: "cont", class: 'boton' %>
+<%= f.submit "Finalizar pedido", name: "fin", class: 'boton' %>
+</div> 
 </div>
+<%= render 'shared/contacto' %>
+<% end %>

@@ -8,8 +8,6 @@
 <link rel="stylesheet" href="/assets/estilos_home.css">
     <title>Página de Inicio</title>
     <script src="https://kit.fontawesome.com/039d04bc54.js" crossorigin="anonymous"></script>
-    
-
 
 </head>
 
@@ -40,12 +38,14 @@
     
     <hr class="linea-superior">
     <div class="blog">
-    <%= image_tag Foto.find_by(nombre:"blog").image, class: "blog_foto", style: "max-width:100%;width:auto;height:auto;"%> 
+    <%= image_tag Foto.find_by(nombre:"blog").image, class: "blog_foto"%> 
     <div class="texto">
     <h1 class="blog_texto_titulo"><%=Foto.find_by(nombre:"blog").titulo%> </h1> 
     <h2 class="blog_texto"><%= Foto.find_by(nombre:"blog").descrip%> </h2> 
     </div>
+    
     </div>
+    <h2 class="blog_texto2"><%= Foto.find_by(nombre:"blog").descrip2%> </h2> 
         <hr class="linea-superior">
         <h1 style="text-align: center; font-family: 'Bodoni Moda', serif; color: #7C5152; padding-top: 10px; font-weight: 600; font-size: 36px;">FORMAS DE PAGO DISPONIBLES</h1>
    

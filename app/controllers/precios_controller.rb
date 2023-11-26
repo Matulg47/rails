@@ -1,9 +1,20 @@
 class PreciosController < ApplicationController
   before_action :set_precio, only: %i[ show edit update destroy ]
+ 
+  
 
   # GET /precios or /precios.json
   def index
-    @precios = Precio.order(:nombre)
+     if params[:val]=="si"
+    
+      @precios = Precio.order(:nombre)
+      
+      else
+        @error_message = "Credenciales incorrectas. Por favor, verifica tu nombre y contraseña."
+        
+        render 'admin' 
+      end
+   
   end
   def admin
     if request.post?
@@ -14,11 +25,11 @@ class PreciosController < ApplicationController
  def identificando
   if params[:nombre]=="cami" && params[:contrasena] =="123"
     
-    redirect_to '/precios'
+    redirect_to '/precios?val=si'
   else
     @error_message = "Credenciales incorrectas. Por favor, verifica tu nombre y contraseña."
     
-    render 'admin' 
+    redirect_to '/admin' 
   end
 end
   # GET /precios/1 or /precios/1.json

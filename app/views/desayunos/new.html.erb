@@ -1,5 +1,51 @@
 <!DOCTYPE html>
 <html>
+<script>
+  function mostrarOpciones(idOpciones) {
+    // Ocultar la foto seleccionada
+    var foto = document.getElementById('foto');
+    var foto2 = document.getElementById('foto2');
+
+    foto.style.transition = 'opacity 0.5s ease-in-out';
+    foto2.style.transition = 'opacity 0.5s ease-in-out';
+    // Cambiar la opacidad gradualmente a 0
+    foto.style.opacity = '0';
+    foto2.style.opacity = '0';
+
+    // Después de la transición, ocultar la foto y restablecer la opacidad
+    setTimeout(function () {
+      foto.style.display = 'none';
+      foto2.style.display = 'none';
+
+      foto.style.opacity = '1';
+      foto2.style.opacity = '1';
+    }, 500); // 500 milisegundos (0.5 segundos)
+
+    // Ocultar la galería con una transición de opacidad
+    var galeria = document.querySelector('.galeria');
+    galeria.style.transition = 'opacity 0.5s ease-in-out';
+    galeria.style.opacity = '0';
+
+    // Después de la transición, ocultar la galería y restablecer la opacidad
+    setTimeout(function () {
+      galeria.style.display = 'none';
+      galeria.style.opacity = '1';
+    }, 600); // 600 milisegundos (0.6 segundos)
+
+    // Mostrar lentamente las opciones
+    var opciones = document.getElementById(idOpciones);
+    opciones.style.transition = 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out';
+    opciones.style.opacity = '0';
+    opciones.style.transform = 'translateY(20px)'; // Inicialmente desplazado hacia abajo
+    opciones.style.display = 'block'; // Asegúrate de que las opciones sean visibles
+
+    // Retrasar la aplicación de la opacidad para que funcione la transición
+    setTimeout(function () {
+      opciones.style.opacity = '1'; // Cambiar gradualmente la opacidad a 1
+      opciones.style.transform = 'translateY(0)'; // Desplazamiento a su posición original
+    }, 100); // 100 milisegundos de retraso para permitir la transición de opacidad
+  }
+</script>
 <head>
     
     <style>
@@ -57,17 +103,68 @@
             margin-top: 20px;
             text-align: center;
         }
+
+        .opciones {
+
+   
+}
     </style>
     
 </head>
 <body>
+
 <%= form_for @desayuno, url:desayunos_path do |f| %>
   <h1> <%= params[:nombre] %> sigamos con tu pedido</h1>
     <div class="contenedor">
     
-
+    
+    <h1>Elegi tu desayuno ✨</h1>
+    <section class="galeria" >
+    <figura>
+        <%= image_tag "taza.webp", title: "taza", class: "logo", id: "foto"%>         
+        <figcaption2> 
+            <h3 class="display-4" style="font-family: 'Dancing Script', cursive;font-size: 25px; text-shadow: 2px 2px 10px white;">
+            PERSONALIZADO</h3>
+        </figcaption2>      
+          <%= f.submit "", name: "mas_tortas", class: "boton2", onclick: "mostrarOpciones('opcionesPersonalizado')" %>
+            
+    </figura>
+    <figura>
+        <%= image_tag "mate.webp", title: "tarta", class: "logo",id: "foto2"%>       
+        <figcaption2> <h3 class="display-4" style="font-family: 'Dancing Script', cursive; font-size: 25px; text-shadow: 2px 2px 10px white;">
+        ESTANDAR</h3>
+        </figcaption2> 
+           <%= f.submit "", name: "mas_tartas", class: "boton2" %>
+    </figura>
+</section>
+<div id="idOpciones" class="opciones">
+<%= render 'desayunos/personalizado' %>
+</div>
       <h1>Personaliza tu desayuno ✨</h1>
-        
+
+      <h1>Elegi tu bebida (opcional)</h1>
+      <section class="galeria" >
+            <figura>
+                <%= image_tag "taza.webp", title: "taza", class: "logo"%>         
+                <figcaption2> 
+                    <h3 class="display-4" style="font-family: 'Dancing Script', cursive;font-size: 25px; text-shadow: 2px 2px 10px white;">
+                    TAZA A ELECCION</h3>
+                </figcaption2>      
+                    <%= f.submit "", name: "mas_tortas", class: "boton2"%>        
+            </figura>
+            <figura>
+                <%= image_tag "mate.webp", title: "tarta", class: "logo"%>       
+                <figcaption2> <h3 class="display-4" style="font-family: 'Dancing Script', cursive; font-size: 25px; text-shadow: 2px 2px 10px white;">MATE</h3>
+                </figcaption2> 
+                   <%= f.submit "", name: "mas_tartas", class: "boton2" %>
+            </figura>
+            <figura>
+                <%= image_tag "exprimido.jpg", title: "tarta", class: "logo"%>       
+                <figcaption2> <h3 class="display-4" style="font-family: 'Dancing Script', cursive; font-size: 25px; text-shadow: 2px 2px 10px white;">EXPRIMIDO DE NARANJA</h3>
+                </figcaption2> 
+                   <%= f.submit "", name: "mas_tartas", class: "boton2" %>
+            </figura>
+      </section>
       <h2>Marquises y Cheesecakes</h2>
       <ul>
           <li class="li2"><%=check_box_tag "desayuno_items[]", "Marquise Frutos Rojos"%> 🧁 Marquise Frutos Rojos (Brownie + dulce de leche + crema + frutos rojos)</li>

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet');
+
 .boton {
     display: inline-block;
     padding: 10px 20px;
@@ -71,6 +73,8 @@
 .blog_foto {
   max-width: 50%; /* O ajusta el valor según tus necesidades */
   height: auto;
+  border-radius: 10px; /* Bordes redondeados */
+ margin:20px;
 }
 
 .blog_texto_titulo {
@@ -83,13 +87,30 @@
  margin-bottom: 10px;
 }
 .blog_texto {
-  text-align: left; /* Puedes cambiarlo si lo necesitas */
-  font-family: "Spartan",sans-serif;
+  text-align:left; /* Puedes cambiarlo si lo necesitas */
+  font-family: 'Dancing Script', cursive;
   color: #7C5152;
   font-weight: 100;
-  font-size: 2em;
+  font-size: 1.5em;
   flex: 1; /* El texto ocupará el espacio restante a la derecha de la imagen */
- 
+  white-space: pre-line;
+ margin-left:30px;
+}
+.blog_texto2 {
+  text-align:left; /* Puedes cambiarlo si lo necesitas */
+  font-family: 'Dancing Script', cursive;
+  color: #7C5152;
+  font-weight: 100;
+  font-size: 1.5em;
+  flex: 1; /* El texto ocupará el espacio restante a la derecha de la imagen */
+  white-space: pre-line;
+ margin:20px;
+ /* Estilos de borde y relleno */
+ border: 2px solid #7C5152; /* Color y grosor del borde */
+ padding: 10px; /* Espacio entre el texto y el borde */
+ border-radius: 10px; /* Bordes redondeados */
+ background-color: #E0C7C8; /* Color de fondo más claro */
+  
 }
 .texto{
   flex:1;
@@ -112,6 +133,7 @@
   }
   .blog_foto {
     max-width: 100%; /* Ocupa el ancho completo en dispositivos móviles */
+    margin-left:0px;
   }
   .blog{
     margin: 0 auto; /* Centra el contenedor en la pantalla */

@@ -1,108 +1,175 @@
-<div id="<%= dom_id pedido %>">
-<%= form_for @pedido, url:pedidos_path do |f| %>
-  <p>
-    <h1>Resumen del Pedido</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    #resumen-pedido {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      color: #333;
+    }
+
+    p, ul, li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    ul {
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .boton {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .boton:hover {
+      background-color: #45a049;
+    }
+
+    .form-label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    .form-textarea {
+      width: 100%;
+      height: 80px;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    .producto-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+    .table-pedido{
+      justify-content: space-between;
+      width:100%;
+      border-collapse: collapse;
+    }
+    .tabla-pedido td {
+      padding-left: 40px;
+      padding-right: 40px;
+      border-bottom: 1px solid #ddd;
+      padding-top:10px;
+      padding-bottom:10px;
+    }
+    .tabla-pedido th {
+      padding-left: 40px;
+      padding-right: 40px;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+<div id="resumen-pedido">
+  <h1>Resumen del Pedido</h1>
+  <%= form_for @pedido, url:pedidos_path do |f| %>
     <p>Detalles del pedido:</p>
-      <ul>
-        <li>Cliente:  
-        <%= f.text_field :a_nombre_de %><%= @pedido.a_nombre_de %></li>
-        <li>Fecha: <%= f.date_field :fecha_de_entrega %><%= @pedido.fecha_de_entrega %></li>
-        <!-- Otros detalles del pedido -->
-      </ul>
-  
-      <h2>Tortas en el pedido:</h2>
-      <ul>
-        <% @tortas.each do |torta| %>
-          <li>
-          <%if torta.tamaño == "Chica" %> 
-          <% @p='precioC' %>
-          <%end%> 
-          <%if torta.tamaño == "Mediano" %> 
-          <% @p='precioM' %>
-          <%end%>
-          <%if torta.tamaño == "Grande" %> 
-          <% @p='precioG' %>
-          <%end%>
-            <%= torta.nombre %> - Unidades:<%=torta.cantidad %> - Tamaño:<%= torta.tamaño %> - Precio:<%= Precio.find_by(nombre:torta.nombre).send(@p) * torta.cantidad%>
-          </li>
-        <% end %>
-      </ul>
+    <ul>
+      <li>Cliente:  
+      <%= f.text_field :a_nombre_de %><%= @pedido.a_nombre_de %></li>
+      <li>Fecha: <%= f.date_field :fecha_de_entrega %><%= @pedido.fecha_de_entrega %></li>
+      <!-- Otros detalles del pedido -->
+    </ul>
 
-      <h2>Tartas en el pedido:</h2>
-      <ul>
-        <% @tartas.each do |tarta| %>
-          <li>
-            <%= tarta.nombre %> - Unidades:<%=tarta.cantidad %> - Tamaño:<%= tarta.tamaño %> - <%= number_to_currency(tarta.precio) %>
-          </li>
-        <% end %>
-      </ul>
-      <h2>Cookies en el pedido:</h2>
-      <ul>
-        <% @macaroons.each do |mac| %>
-          <li>
-          <%if mac.tamaño == "Chica" %> 
-          <% @p='precioC' %>
-          <%end%> 
-          <%if mac.tamaño == "Mediano" %> 
-          <% @p='precioM' %>
-          <%end%>
-          <%if mac.tamaño == "Grande" %> 
-          <% @p='precioG' %>
-          <%end%>
-          <%if mac.nombre == "Chipá" %> 
-          <% @p='precioC' %>
-          <%end%>
-          
-            <%= mac.nombre %> - Unidades:<%=mac.cantidad %> - Tamaño:<%= mac.tamaño %> - Precio:<%= Precio.find_by(nombre:mac.nombre).send(@p) * mac.cantidad%>
-          </li>
-        <% end %>
-      </ul>
-      <h2>Budines, brownies y Streusels en el pedido:</h2>
-      <ul>
-        <% @otros.each do |o| %>
-          <li>
-          <%if o.tamaño == "Chica" %> 
-          <% @p='precioC' %>
-          <%end%> 
-          <%if o.tamaño == "Grande" %> 
-          <% @p='precioG' %>
-          <%end%>
-          
-            <%= o.nombre %> - Unidades:<%=o.cantidad %> - Tamaño:<%= o.tamaño %> - Precio:<%= Precio.find_by(nombre:o.nombre).send(@p) * o.cantidad%>
-          </li>
-        <% end %>
-      </ul>
-      <h2>Desayunos personalizados en el pedido:</h2>
-      <ul>
-        <% @desayunos.each do |desayuno| %>
-          <li>
-            <%= desayuno.descripcion %> - <%= number_to_currency(desayuno.precio) %>
-          </li>
-        <% end %>
-      </ul>
-  </p>
-  <%@consulta_texto="¡Hola Cami!
-
-Espero que estés teniendo un buen día. Quisiera hacer un pedido de algunos productos deliciosos para [fecha del pedido]. Aquí están los detalles:
-
-**Pedido:**
-
-- [Producto 1]: [Detalles del producto 1]
-- [Producto 2]: [Detalles del producto 2]
-- [Producto 3]: [Detalles del producto 3]
-- ...
-
-**Detalles Adicionales:**
-
-- Fecha de entrega: [Fecha de entrega deseada]
-- Dirección de entrega: [Dirección de entrega]
-- Información adicional: [Cualquier nota o requisito especial]
-
-Por favor, avísame si necesitas más información o si hay algún problema con mi pedido. ¡Estoy emocionado/a de probar tus deliciosos productos!
-
-¡Gracias y saludos!
-[Tu Nombre]
-[Tu Número de Contacto]"%>
-<a href="<%= 'https://wa.me/2216203959?text=' + URI.encode_www_form_component(@consulta_texto) %>" class="boton">Enviar pedido</a>
+    <% @total=0 %>
+    <h2></h2>
+    <table class="tabla-pedido">
+    <tr>
+    <th>Producto</th>
+    <th>Tamaño</th>
+    <th>Unidades</th>
+    <th>Precio</th>
+    </tr>
+    <tr>
+    <% @tortas.each do |torta| %>
+      <%if torta.tamaño == "Chica" %> 
+        <% @p='precioC' %>
+      <%end%> 
+      <%if torta.tamaño == "Mediano" %> 
+        <% @p='precioM' %>
+      <%end%>
+      <%if torta.tamaño == "Grande" %> 
+        <% @p='precioG' %>
+      <%end%>
+      <td> <p><%= torta.nombre %></p></td>
+      <td><p><%= torta.tamaño %></p></td>
+      <td><p><%=torta.cantidad %></p></td>
+      <td><p>$<%= Precio.find_by(nombre:torta.nombre).send(@p) * torta.cantidad%></p></td>
+      </tr>
+      <% @total+= Precio.find_by(nombre:torta.nombre).send(@p) * torta.cantidad %>
+    <%end%>
+    <tr>
+    <% @tartas.each do |tarta| %>
+      <%if tarta.tamaño == "Chica" %> 
+      <% @p='precioC' %>
+      <%end%> 
+      <%if tarta.tamaño == "Mediano" %> 
+      <% @p='precioM' %>
+      <%end%>
+      <%if tarta.tamaño == "Grande" %> 
+      <% @p='precioG' %>
+      <%end%>
+      <td> <%= tarta.nombre %></td>
+      <td><%= tarta.tamaño %></td>
+      <td><%=tarta.cantidad %></td>
+      <td>$<%= Precio.find_by(nombre:tarta.nombre).send(@p) * tarta.cantidad%></td>
+      </tr>
+      <% @total+= Precio.find_by(nombre:tarta.nombre).send(@p) * tarta.cantidad %>
+    <%end%>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><b>Total</b></td>
+      <td><b>$<%= @total%></b></td>
+    </tr>
+    </table>
+    
+    
+    <button type="submit" class="boton">Realizar Pedido</button>
+  <%end %>
 </div>
-<% end %>
+
+</body>
+</html>

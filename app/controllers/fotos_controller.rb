@@ -55,7 +55,7 @@ class FotosController < ApplicationController
   def update
     respond_to do |format|
       if @foto.update(foto_params)
-        format.html { redirect_to foto_url(@foto), notice: "Foto was successfully updated." }
+        format.html { redirect_to fotos_path, notice: "Foto was successfully updated." }
         format.json { render :show, status: :ok, location: @foto }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -82,7 +82,7 @@ class FotosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def foto_params
-      params.fetch(:foto).permit(:image, :nombre, :titulo, :descrip)
+      params.fetch(:foto).permit(:image, :nombre, :titulo, :descrip, :descrip2)
     end
     def foto_p
       params.fetch(:foto_N)

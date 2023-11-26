@@ -1,33 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Precio</title>
+
+  <!-- Estilos CSS en línea -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #007BFF;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .actions {
+      margin-top: 20px;
+    }
+
+    input[type="submit"] {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .acciones {
+      margin-top: 10px;
+    }
+
+    .acciones a {
+      margin-right: 10px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .acciones a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
 <h1>Editing precio</h1>
-<%= form_for @precio,  method: :patch do |f| %>
+
+<%= form_for @precio, method: :patch do |f| %>
   <div class="field">
-  <%= f.label :nombre %>
-  <%= f.text_field :nombre %>
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
   </div>
 
   <div class="field">
-    <%= f.label :'precio individual' %>
+    <%= f.label :'Precio Individual' %>
     <%= f.number_field :precioC %>
   </div>
+
   <div class="field">
-    <%= f.label :precioM %>
+    <%= f.label :'Precio Mediano' %>
     <%= f.number_field :precioM %>
   </div>
+
   <div class="field">
-    <%= f.label :precioG %>
+    <%= f.label :'Precio Grande' %>
     <%= f.number_field :precioG %>
   </div>
 
   <div class="actions">
     <%= f.submit 'Actualizar Precio' %>
-    </div>
-    <% end %>
+  </div>
+<% end %>
+
 <%= @precio.precioC %>
 <%= @precio.precioM %>
 <%= @precio.precioG %>
 <br>
 
-<div>
-  <%= link_to "Show this precio", @precio %> |
-  <%= link_to "Back to precios", precios_path %>
+<div class="acciones">
+  <%= link_to "Ver este precio", @precio %> |
+  <%= link_to "Volver a precios", precios_path %>
 </div>
+
+</body>
+</html>

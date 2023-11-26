@@ -70,18 +70,20 @@ class TartsController < ApplicationController
         if(indice>16 )
             @tarta.nombre= "Tarta de Maracuyá y Frambuesa"
         end
-        if(indice==1 || indice==3 || indice==5 || indice==7 || indice==9 || indice==11 || indice==13 || indice==15|| indice==17)
+        if(indice==1 || indice==3 || indice==5 || indice==7 || indice==9 || indice==11 || indice==13 || indice==15)
             @tarta.tamaño="Mediano"
         end
-        if(indice==2 || indice==4 || indice==6 || indice==8 || indice==10 || indice==12 || indice==14 || indice==16)
+        if(indice==2 || indice==4 || indice==6 || indice==8 || indice==10 || indice==12 || indice==14 || indice==16 || indice==17)
             @tarta.tamaño="Grande"
         end
-        puts 'PROBANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'
+       
         @tarta.cantidad=cantidad
-        @tarta_en=Tart.find_by(nombre: @tarta.nombre, tamaño: @tarta.tamaño)
+        @tarta_en=Tart.find_by(nombre: @tarta.nombre, tamaño: @tarta.tamaño, pedido_id: params[:pedido_id])
         if @tarta_en
-            puts @tarta_en
+            
             @tarta_en.cantidad += @tarta.cantidad
+            puts 'PROBANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'
+            puts @tarta_en.cantidad
             if @tarta_en.update(cantidad: @tarta_en.cantidad)
                 
             else

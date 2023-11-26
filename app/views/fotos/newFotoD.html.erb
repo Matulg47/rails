@@ -1,26 +1,102 @@
-<h1>New foto</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nueva Foto</title>
+
+  <!-- Estilos CSS en línea -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #007BFF;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #d3b6b2;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    input[type="submit"] {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    a:hover {
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Nueva Foto</h1>
 
 <%= form_with(model: @foto1, url: subiendo_path, local: true) do |form| %>
+  <label for="archivo-input">Imagen:</label>
   <%= form.file_field :image, id: "archivo-input" %>
-  titulo
+
+  <label for="titulo">Título:</label>
   <%= form.text_field :titulo %>
-  descripcion
-  <%= form.text_area :descrip, rows:5, cols:40 %>
+
+  <label for="descrip">Descripción:</label>
+  <%= form.text_area :descrip, rows: 5, cols: 40 %>
+
   <%= form.submit "Subir imagen" %>
 <% end %>
-
-  
-<script>
-  $(document).on('change', '#archivo-input', function() {
-    var nombreArchivo = $(this).val().split("\\").pop(); // Obtiene el nombre del archivo
-    $("input[name='nombre']").val(nombre); // Actualiza la variable oculta
-  });
-</script>
-
-
 
 <br>
 
 <div>
-  <%= link_to "Back to fotos", fotos_path %>
+  <%= link_to "Volver a Fotos", fotos_path %>
 </div>
+
+</body>
+</html>

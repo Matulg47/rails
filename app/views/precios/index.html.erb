@@ -1,20 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precios</title>
+
+  <!-- Estilos CSS en línea -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #007BFF;
+    }
+
+    #precios {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .precio {
+      background-color: #fff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .precio h2 {
+      margin-bottom: 10px;
+    }
+
+    .precio p {
+      margin: 5px 0;
+    }
+
+    .acciones {
+      margin-top: 10px;
+    }
+
+    .acciones a {
+      margin-right: 10px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .acciones a:hover {
+      text-decoration: underline;
+    }
+
+    .boton-nuevo {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .boton-nuevo:hover {
+      background-color: #218838;
+    }
+
+    .boton-modificar {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    
+    }
+
+    .boton-modificar:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
 <p style="color: green"><%= notice %></p>
 
 <h1>Precios</h1>
 
 <div id="precios">
   <% @precios.each do |precio| %>
-    <%= precio.nombre %>
-    <%= precio.precioC %>
-    <%= precio.precioM %>
-    <%= precio.precioG %>
+    <div class="precio">
+      <h2><%= precio.nombre %></h2>
+      <p>Precio Chico: <%= precio.precioC %></p>
+      <p>Precio Mediano: <%= precio.precioM %></p>
+      <p>Precio Grande: <%= precio.precioG %></p>
     
-    <p>
-    <%= link_to "Edit this precio", edit_precio_path(precio) %> |
-      <%= link_to "Show this precio", precio %>
-    </p>
+      <div class="acciones">
+        <%= link_to "Editar", edit_precio_path(precio), class: "boton-modificar" %> 
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New precio", new_precio_path %>
-<%= link_to "Modificar Fotos", fotos_path %>
+
+<%= link_to "Modificar Fotos", fotos_path, class: "boton-modificar" %>
+
+</body>
+</html>

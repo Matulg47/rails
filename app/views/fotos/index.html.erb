@@ -1,22 +1,110 @@
+<style>
+.foto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+/* Estilos para los Botones de Agregar */
+.boton-agregar {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.boton-agregar:hover {
+  background-color: #45a049;
+}
+/* Estilos para la foto */
+.foto {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la información de la foto */
+.info-foto {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Estilos para el botón de modificar */
+.boton-modificar {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.boton-modificar:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el botón de eliminar */
+.boton-eliminar {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #DC3545;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.boton-eliminar:hover {
+  background-color: #a71d2a;
+}
+.boton-precios {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .boton-precios:hover {
+      background-color: #0056b3;
+    }
+</style>
+</head>
 <p style="color: green"><%= notice %></p>
 
-<h1>Fotos</h1>
+<h1 style="color: #333;">Fotos</h1>
 
-<div id="fotos">
+<div id="fotos" style="display: flex; flex-wrap: wrap; gap: 20px;">
+
   <% @fotos.each do |foto| %>
-    
-    <%= image_tag foto.image %>
-    <%= foto.titulo %>
-    <%= foto.nombre %>
-    <%= button_to "Destroy this foto", foto, method: :delete %>
-    
-
-
+    <div class="foto-container">
+    <%= image_tag foto.image, size: "300x200", class: "foto" %>
+    <div class="info-foto">
+      <h3><%= foto.titulo %></h3>
+      <p><%= foto.nombre %></p>
+      <% if foto.nombre == "blog" %>
+        <%= link_to "Modificar Foto del blog", edit_foto_path(id: foto.id), class: "boton-modificar" %>
+      <% else %>
+        <%= button_to "Eliminar foto", foto, method: :delete, class: "boton-eliminar" if @fotos.where(nombre: "deslizante").count>1 %>
+      <% end %>
+    </div>
+  </div>
   <% end %>
 </div>
-<% if !@fotos.find_by(nombre:"blog") %>
-  <%= link_to "Agregar foto del blog", new_foto_path %>
-<% end %>
-<% if @fotos.where(nombre:"deslizante").count<3 %>
-  <%= link_to "Agregar foto deslizante", newFotoD_path %>
-<% end %>
+<!-- Enlace para Agregar foto del blog -->
+<%= link_to "Agregar foto del blog", new_foto_path, class: "boton-agregar" unless @fotos.find_by(nombre: "blog") %>
+
+<!-- Enlace para Agregar foto deslizante -->
+<%= link_to "Agregar foto deslizante", newFotoD_path, class: "boton-agregar" if @fotos.where(nombre: "deslizante").count < 3 %>
+
+<a href="<%= precios_path %>" class="boton-precios">Volver</a>

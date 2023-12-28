@@ -1,50 +1,86 @@
 <!DOCTYPE html>
 <html>
 <script>
-  function mostrarOpciones(idOpciones) {
-    // Ocultar la foto seleccionada
-    var foto = document.getElementById('foto');
-    var foto2 = document.getElementById('foto2');
+function marcarCheckbox(idCheckbox) {
 
-    foto.style.transition = 'opacity 0.5s ease-in-out';
-    foto2.style.transition = 'opacity 0.5s ease-in-out';
-    // Cambiar la opacidad gradualmente a 0
-    foto.style.opacity = '0';
-    foto2.style.opacity = '0';
-
-    // Después de la transición, ocultar la foto y restablecer la opacidad
-    setTimeout(function () {
-      foto.style.display = 'none';
-      foto2.style.display = 'none';
-
-      foto.style.opacity = '1';
-      foto2.style.opacity = '1';
-    }, 500); // 500 milisegundos (0.5 segundos)
-
-    // Ocultar la galería con una transición de opacidad
-    var galeria = document.querySelector('.galeria');
-    galeria.style.transition = 'opacity 0.5s ease-in-out';
-    galeria.style.opacity = '0';
-
-    // Después de la transición, ocultar la galería y restablecer la opacidad
-    setTimeout(function () {
-      galeria.style.display = 'none';
-      galeria.style.opacity = '1';
-    }, 600); // 600 milisegundos (0.6 segundos)
-
-    // Mostrar lentamente las opciones
-    var opciones = document.getElementById(idOpciones);
-    opciones.style.transition = 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out';
-    opciones.style.opacity = '0';
-    opciones.style.transform = 'translateY(20px)'; // Inicialmente desplazado hacia abajo
-    opciones.style.display = 'block'; // Asegúrate de que las opciones sean visibles
-
-    // Retrasar la aplicación de la opacidad para que funcione la transición
-    setTimeout(function () {
-      opciones.style.opacity = '1'; // Cambiar gradualmente la opacidad a 1
-      opciones.style.transform = 'translateY(0)'; // Desplazamiento a su posición original
-    }, 100); // 100 milisegundos de retraso para permitir la transición de opacidad
+    var imagen = document.getElementById('imagen' + idCheckbox);
+    var checkbox = document.getElementById(idCheckbox);
+    // Desmarcar todos los radio buttons del mismo grupo
+    var radioButtons = document.querySelectorAll('input[type="radio"][name="' + checkbox.name + '"]');
+    radioButtons.forEach(function (radio) {
+        if (radio.id !== idCheckbox) {
+            radio.checked = false;
+            var otraImagen = document.getElementById('imagen' + radio.id);
+            otraImagen.style.border = 'none';
+            otraImagen.style.opacity = '0.5';
+            }  else {
+                
+                imagen.style.border = '2px solid red';
+                imagen.style.opacity = '1';
+            }
+          
+      });
   }
+
+  function marcarCheck(idCheck){
+    var checkbox = document.getElementById(idCheck);
+    var productoContainer = document.getElementById(idCheck);
+  
+    if (checkbox.checked) {
+      productoContainer.style.border = '2px solid red';
+    } else {
+      productoContainer.style.border = 'none';
+    }
+  }
+function mostrarOpciones(idOpciones) {
+  // Ocultar la foto seleccionada
+  var foto = document.getElementById('foto');
+  var foto2 = document.getElementById('foto2');
+  var titulo = document.getElementById('foto'); // Agregado para obtener el título
+
+  foto.style.transition = 'opacity 0.5s ease-in-out';
+  foto2.style.transition = 'opacity 0.5s ease-in-out';
+  titulo.style.transition = 'opacity 0.5s ease-in-out'; // Agregado para el título
+  // Cambiar la opacidad gradualmente a 0
+  foto.style.opacity = '0';
+  foto2.style.opacity = '0';
+  titulo.style.opacity = '0'; // Agregado para el título
+
+  // Después de la transición, ocultar la foto y restablecer la opacidad
+  setTimeout(function () {
+    foto.style.display = 'none';
+    foto2.style.display = 'none';
+    titulo.style.display = 'none'; // Agregado para el título
+
+    foto.style.opacity = '1';
+    foto2.style.opacity = '1';
+    titulo.style.opacity = '1'; // Agregado para el título
+  }, 500); // 500 milisegundos (0.5 segundos)
+
+  // Ocultar la galería con una transición de opacidad
+  var galeria = document.querySelector('.galeria');
+  galeria.style.transition = 'opacity 0.5s ease-in-out';
+  galeria.style.opacity = '0';
+
+  // Después de la transición, ocultar la galería y restablecer la opacidad
+  setTimeout(function () {
+    galeria.style.display = 'none';
+    galeria.style.opacity = '1';
+  }, 600); // 600 milisegundos (0.6 segundos)
+
+  // Mostrar lentamente las opciones
+  var opciones = document.getElementById(idOpciones);
+  opciones.style.transition = 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out';
+  opciones.style.opacity = '0';
+  opciones.style.transform = 'translateY(20px)'; // Inicialmente desplazado hacia abajo
+  opciones.style.display = 'block'; // Asegúrate de que las opciones sean visibles
+
+  // Retrasar la aplicación de la opacidad para que funcione la transición
+  setTimeout(function () {
+    opciones.style.opacity = '1'; // Cambiar gradualmente la opacidad a 1
+    opciones.style.transform = 'translateY(0)'; // Desplazamiento a su posición original
+  }, 100); // 100 milisegundos de retraso para permitir la transición de opacidad
+}
 </script>
 <head>
     
@@ -85,28 +121,141 @@
             position: relative;
         }
 
-        .li2::after {
-            content: "......................................";
-            flex: 1;
-            color: #ccc;
-        }
-        .li2 span {
-          white-space: nowrap;
-      }
+        
+      
 
         input[type="checkbox"] {
             margin-right: 10px;
         }
-
+      
         h2 {
             font-size: 20px;
             margin-top: 20px;
             text-align: center;
         }
 
-        .opciones {
+        .opciones {}
 
+        .radio-hidden {
+          display: none;
+        }
+       
+        label{
+          margin:.0rem;
+        }
+        
+        .custom-checkbox img {
+          transition: border 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Ajusta la duración según lo que desees */
+        }
+        .custom-checkbox:hover img {
+    border: 2px solid red;
+  }
+
+  .galeria{
+    padding-bottom: 5px;
+  }
+
+  .custom-checkbox-container {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los elementos */
+  background-color: #e3c6b9; /* Color de fondo del rectángulo */
+  padding: 10px; /* Espaciado alrededor del contenido */
+  border-radius: 8px; /* Bordes redondeados para el rectángulo */
+  margin-bottom: 10px; /* Espaciado entre rectángulos */
+}
+
+.custom-checkbox-content {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los elementos dentro del span */
+}
+
+.custom-checkbox-content img {
+  margin-right: 10px; /* Ajusta el espacio entre la imagen y el texto según sea necesario */
+}
+.checkbox-text {
+  flex-grow: 1; /* Hace que el texto ocupe todo el espacio disponible */
+  white-space: normal; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el texto que excede el ancho del contenedor */
+  word-wrap: break-word; /* Añadido para permitir el desbordamiento de palabras */
+  font-size: 2vw; /* Ajusta el tamaño de fuente según sea necesario */
+  color: #333; /* Cambia el color del texto según sea necesario */
+
+}
+.checkbox-title {
+  font-family: 'Dancing Script', cursive; /* Fuente para el título */
+  font-size: 2vw; /* Tamaño de fuente para el título */
+  margin-bottom: 5px; /* Espaciado inferior para separar el título del texto adicional */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden;
+}
+
+.checkbox-description {
+  font-family: 'Arial', sans-serif; /* Fuente para el texto adicional */
+  font-size: 1vw; /* Tamaño de fuente para el texto adicional */
+  color: #666; /* Color del texto adicional */
+}
+.precio-label {
+  text-align: center; /* Alinea el precio al centro */
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  color: #7C5152;
+  font-weight: 400;
+  font-size: 2vw;
+  max-width: 150px;
+  position: absolute;
+  bottom: 10px;
+  right: 10%; /* Posiciona el precio en la mitad del contenedor */
+  transform: translateX(50%); /* Centra horizontalmente el precio */
+}
+
+
+.productos {
+    margin-top: 20px;
+  }
+
+  .productos-lista {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 1200px; /* Ancho máximo de la grilla */
+    
+  }
+
+  .producto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    
+
+    background-color: #e3c6b9; /* Color de fondo del rectángulo */
+    padding: 10px; /* Espaciado alrededor del contenido */
+    border-radius: 8px; /* Bordes redondeados para el rectángulo */
+    margin-bottom: 10px; /* Espaciado entre rectángulos */
+  }
+  .text {
+    flex-grow: 1;
+    max-width: calc(100% - 40% ); /* Ancho máximo para el texto */
+    padding: 0 10px; /* Agrega relleno al texto para separarlo de la imagen */
+  
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2vw;
+    line-height: 1.2; /* Espaciado entre líneas del título */
+    margin-bottom: 5px;
+    
+    text-align:center;
+}
+
+.description {
+    font-family: 'Arial', sans-serif;
+    font-size: 1vw;
+    color: #666;
+    line-height: 1.2; /* Espaciado entre líneas del texto adicional */
    
+    text-align:center;
 }
     </style>
     
@@ -118,7 +267,7 @@
     <div class="contenedor">
     
     
-    <h1>Elegi tu desayuno ✨</h1>
+    <h1 id:= "foto">✨ Elegi tu desayuno ✨</h1>
     <section class="galeria" >
     <figura>
         <%= image_tag "taza.webp", title: "taza", class: "logo", id: "foto"%>         
@@ -137,34 +286,149 @@
            <%= f.submit "", name: "mas_tartas", class: "boton2" %>
     </figura>
 </section>
-<div id="idOpciones" class="opciones">
-<%= render 'desayunos/personalizado' %>
-</div>
-      <h1>Personaliza tu desayuno ✨</h1>
 
-      <h1>Elegi tu bebida (opcional)</h1>
-      <section class="galeria" >
-            <figura>
-                <%= image_tag "taza.webp", title: "taza", class: "logo"%>         
+
+<!-- Opciones ESTANDAR -->
+<div class="opciones" id="opcionesEstandar" style="display: none;">
+  <h2>Opciones para ESTANDAR</h2>
+  <!-- Aquí agrega tus opciones para el desayuno estándar -->
+</div>
+<!-- Opciones PERSONALIZADO -->
+<div class="opciones" id="opcionesPersonalizado" style="display: none;">
+      <h1> ✨ Personalizalo ✨</h1>
+
+
+      <h2>Elegi tu Bandeja</h2>
+     
+      
+     <figura>
+      <label class="custom-checkbox-container">
+        <%= f.radio_button :nombre, false, class: "radio-hidden", id: "checkbox" %>
+        <span class="custom-checkbox-content">
+          <%= image_tag "taza.webp", title: "taza", class: "logo", id: "imagencheckbox", onclick: "marcarCheckbox('checkbox')" %>
+         
+        </span>
+        <span class="checkbox-text"> <div class="checkbox-title">Bandeja de cartón con visor</div>
+        <div class="checkbox-description">Incluye flores, velita y tarjeta con dedicatoria</div>
+       
+          </span>
+      </label>
+      <h1 class="precio-label"> 
+      $<%= Precio.find_by(nombre:"Bandeja de cartón con visor (incluye flores, velita y tarjeta con dedicatoria)").precioC%> </h1>
+    </figura>
+
+    <figura>
+      <label class="custom-checkbox-container">
+        <%= f.radio_button :nombre, false, class: "radio-hidden", id: "checkbox" %>
+        <span class="custom-checkbox-content">
+          <%= image_tag "taza.webp", title: "taza", class: "logo", id: "imagencheckbox", onclick: "marcarCheckbox('checkbox')" %>
+         
+        </span>
+        <span class="checkbox-text"> <div class="checkbox-title"> Bandeja de Madera chica</div>
+        <div class="checkbox-description">Incluye flores, velita y tarjeta con dedicatoria</div>
+       
+          </span>
+      </label>
+      <h1 class="precio-label"> 
+      $<%= Precio.find_by(nombre:"Bandeja de Madera chica (incluye flores, velita y tarjeta con dedicatoria)").precioC%> </h1>
+    </figura>
+
+    <figura>
+      <label class="custom-checkbox-container">
+        <%= f.radio_button :nombre, false, class: "radio-hidden", id: "checkbox" %>
+        <span class="custom-checkbox-content">
+          <%= image_tag "taza.webp", title: "taza", class: "logo", id: "imagencheckbox", onclick: "marcarCheckbox('checkbox')" %>
+         
+        </span>
+        <span class="checkbox-text"> <div class="checkbox-title">Bandeja de Madera grande</div>
+        <div class="checkbox-description">Incluye flores, velita y tarjeta con dedicatoria</div>
+       
+          </span>
+      </label>
+      <h1 class="precio-label"> 
+      $<%= Precio.find_by(nombre:"Bandeja de Madera grande (incluye flores, velita y tarjeta con dedicatoria)").precioC%> </h1>
+    </figura>
+
+
+
+      <h2>Elegi tu bebida (opcional)</h2>
+      <section class="galeria" style="grid-template-columns: repeat(3, 1fr);" >
+        <figura>
+          <label>
+            <%= f.radio_button :nombre, false,class: "radio-hidden" , id:"checkboxTaza"%>
+            <span class="custom-checkbox">
+              <%= image_tag "taza.webp", title: "taza", class: "logo", id: "imagencheckboxTaza", onclick: "marcarCheckbox('checkboxTaza')"%>         
+              <figcaption2> 
+                <h3 class="display-4" style="font-family: 'Dancing Script', cursive;font-size: 25px; text-shadow: 2px 2px 10px white;">
+                TAZA A ELECCION</h3>
+              </figcaption2>   
+            </span>
+          </label>
+        </figura>
+        
+
+        <figura>
+          <label>
+            <%= f.radio_button :nombre, false,class: "radio-hidden" , id:"checkboxMate"%>
+            <span class="custom-checkbox">
+                <%= image_tag "mate.webp", title: "mate", class: "logo" , id: "imagencheckboxMate", onclick: "marcarCheckbox('checkboxMate')"%>       
                 <figcaption2> 
-                    <h3 class="display-4" style="font-family: 'Dancing Script', cursive;font-size: 25px; text-shadow: 2px 2px 10px white;">
-                    TAZA A ELECCION</h3>
-                </figcaption2>      
-                    <%= f.submit "", name: "mas_tortas", class: "boton2"%>        
-            </figura>
-            <figura>
-                <%= image_tag "mate.webp", title: "tarta", class: "logo"%>       
-                <figcaption2> <h3 class="display-4" style="font-family: 'Dancing Script', cursive; font-size: 25px; text-shadow: 2px 2px 10px white;">MATE</h3>
+                  <h3 class="display-4" style="font-family: 'Dancing Script', cursive; font-size: 25px; text-shadow: 2px 2px 10px white;">MATE</h3>
                 </figcaption2> 
-                   <%= f.submit "", name: "mas_tartas", class: "boton2" %>
-            </figura>
-            <figura>
-                <%= image_tag "exprimido.jpg", title: "tarta", class: "logo"%>       
-                <figcaption2> <h3 class="display-4" style="font-family: 'Dancing Script', cursive; font-size: 25px; text-shadow: 2px 2px 10px white;">EXPRIMIDO DE NARANJA</h3>
+            </span> 
+          </label>
+        </figura>
+
+        <figura>
+          <label>
+            <%= f.radio_button :nombre, false,class: "radio-hidden" , id:"checkboxJugo"%>
+            <span class="custom-checkbox">
+                <%= image_tag "exprimido.jpg", title: "tarta", class: "logo", id: "imagencheckboxJugo", onclick: "marcarCheckbox('checkboxJugo')"%>       
+                <figcaption2> 
+                  <h3 class="display-4" style="font-family: 'Dancing Script', cursive; font-size: 25px; text-shadow: 2px 2px 10px white;">EXPRIMIDO DE NARANJA</h3>
                 </figcaption2> 
-                   <%= f.submit "", name: "mas_tartas", class: "boton2" %>
-            </figura>
+            </span> 
+          </label>
+        </figura>
       </section>
+     
+     
+      <div style="display: flex; justify-content: center; align-items: center; ">
+        <label>
+          <%= f.radio_button :nombre, false, class: "radio-hidden", id: "checkboxQuitar", onclick: "marcarCheckbox('checkboxQuitar')" %>
+          <div style="background-color: #e3c6b9; padding: 10px; display: flex; align-items: center; border-radius: 8px;">
+            <h3 class="display-4" style="font-family: 'Dancing Script', cursive; font-size: 25px; text-shadow: 2px 2px 10px white; margin: 0;">Quitar mi elección</h3>
+          </div>
+        </label>
+      </div>
+      
+     
+      <section class="productos">
+        <h2>Marquises y Cheesecakes</h2>
+        <ul class="productos-lista">
+          <% productos = ["Marquise Frutos Rojos", "Marquise Oreo", "Marquise Praline", "Marquise Clásica", "Marquise Ferrero", "Rogel", "Cheesecake Frutos Rojos"] %>
+          <% fotos = ["marquiseFR.png", "marquiseO.jpg", "marquisePL.png", "marquiseClasica.jpeg", "marquiseFerrero.jpeg", "Rogel.jpeg", "cheesecakeFR.jpg"] %>
+          <% descripciones = ["Brownie + Dulce de Leche + Crema + Frutos Rojos", "Brownie + Dulce de Leche + Crema Oreo + Merengue Italiano", 
+          "Brownie, Dulce de Leche, Crema con Nueces Caramelizadas y Merengue Italiano", "Brownie, Dulce de Leche y Merengue Italiano o Crema", 
+          "Brownie, Dulce de Leche, Nutella, Crema y Ferreros", "10cm de diámetro", "10cm de diámetro"] %>
+          <% indice = 0 %>
+          <% productos.each do |producto| %>
+            <li class="producto li2">
+              <% check_box_tag "desayuno_items[]", producto, id: 'checkbox#{producto}' %> 
+              <%= image_tag  fotos[indice], title: "taza", class: "logo", id: 'imagen#{producto}', onclick: "marcarCheck('#{producto}')", style:"width:60%;max-width:141px;" %>
+              
+              <span class="text"> 
+                <div class="title" style=" line-height: 1.2;  letter-spacing: -0.02em;"><%=producto %> </div>
+                <div class="description"><%=descripciones[indice] %></div>
+       
+          </span>
+              <span class="precio-label" style="font-size: 1vw">$<%= Precio.find_by(nombre: producto).precioC %></span>
+            </li>
+            <% indice = indice+1 %>
+          <% end %>
+        </ul>
+      </section>
+
       <h2>Marquises y Cheesecakes</h2>
       <ul>
           <li class="li2"><%=check_box_tag "desayuno_items[]", "Marquise Frutos Rojos"%> 🧁 Marquise Frutos Rojos (Brownie + dulce de leche + crema + frutos rojos)</li>
@@ -274,19 +538,12 @@
             <li class="li2"><input type="checkbox"> ☕️ Pregunta por las opciones de taza</li>
         </ul>
         
-        <h2>Bandejas</h2>
-        <ul>
-            <li class="li2"><input type="checkbox"> 🎁 Bandeja de cartón con visor (incluye flores, velita y tarjeta con dedicatoria)</li><h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
-            $<%= Precio.find_by(nombre:"Bandeja de cartón con visor (incluye flores, velita y tarjeta con dedicatoria)").precioC%> c/u</h1>
-            <li class="li2"><input type="checkbox"> 🎁 Bandeja de Madera chica (incluye flores, velita y tarjeta con dedicatoria)</li><h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
-            $<%= Precio.find_by(nombre:"Bandeja de Madera chica (incluye flores, velita y tarjeta con dedicatoria)").precioC%> c/u</h1>
-            <li class="li2"><input type="checkbox"> 🎁 Bandeja de Madera grande (incluye flores, velita y tarjeta con dedicatoria)</li><h1 class="precio-label" style="text-align: center;max-width: 150px; font-family: 'Playfair Display', 'Times New Roman', serif; color: #7C5152; font-weight: 400; font-size: 16px;"> 
-            $<%= Precio.find_by(nombre:"Bandeja de Madera grande (incluye flores, velita y tarjeta con dedicatoria)").precioC%> c/u</h1>
-        </ul>
+        
         <input type="text" name="pedido_id"  value= <%= params[:pedido_id] %> /> 
     <%= f.submit "Continuar", name: "cont", class: 'boton' %>
     <%= f.submit "Finalizar pedido", name: "fin", class: 'boton' %>
     </div>
-    <%end%>  
+    <%end%> 
+  </div> 
 </body>
 </html>
